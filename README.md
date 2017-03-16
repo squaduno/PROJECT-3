@@ -4,12 +4,11 @@
 
 
 ## Technologies Used
-
+Node, Javascript, CSS, HTML, Jquery, Ajax, Json
 
 
 ## Installation 
-
-
+fork from github
 
 ## Process 
 
