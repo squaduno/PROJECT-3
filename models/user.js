@@ -1,4 +1,5 @@
 var mongoose  = require('mongoose'),
+    Api = require('./api'),
     bcrypt    = require('bcrypt-nodejs')
 
 var userSchema = new mongoose.Schema({
