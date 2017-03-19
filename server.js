@@ -8,6 +8,9 @@ var express = require('express'),
     passport = require('passport'),
     session = require('express-session')
 
+// connect database
+mongoose.connect( 'mongodb://localhost/jukebox' )
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
