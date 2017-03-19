@@ -5,12 +5,14 @@ var express = require('express'),
     //for api
 var {apiIndex, apiShow} = require('../controllers/apis'),
     //for users
-    {index, create} = require('../controllers/users')
+    {index, create, update} = require('../controllers/users')
 
 //this is for users
 router.route('/')
   .get(index)
   .post(create)
 
+router.route('/users/:id')
+  .post(update)
 
 module.exports = router
