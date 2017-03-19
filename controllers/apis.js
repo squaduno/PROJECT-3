@@ -1,15 +1,29 @@
-var Api = require('../models/api')
+var User = require('../models/user'),
+    Api = require( '../models/api' )
 
-function index(req, res) {
+function apiIndex(req, res) {
   Api.find({}, function(err, apis) {
     if (err) throw err
     res.json(apis)
   })
 }
 
-function show(req, res) {
+function apiShow(req, res) {
   Api.find({}, function(err, user) {
     if (err) throw
     res.json(api)
   })
 }
+
+module.exports = {
+  index: index,
+  show: show
+}
+
+
+
+
+
+
+
+//
