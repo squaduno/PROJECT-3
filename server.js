@@ -28,5 +28,5 @@ app.get('/', function(req, res){
 
 
 app.listen(port, function(req, res){
-  console.log('The server is running on port', port)
+  console.log('The jukebox is running on', port)
 })
