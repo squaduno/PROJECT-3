@@ -10,14 +10,14 @@ function apiIndex(req, res) {
 
 function apiShow(req, res) {
   Api.find({}, function(err, user) {
-    if (err) throw
+    if (err) throw err
     res.json(api)
   })
 }
 
 module.exports = {
-  index: index,
-  show: show
+  apiIndex: apiIndex,
+  apiShow: apiShow
 }
 
 

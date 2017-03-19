@@ -3,8 +3,9 @@ var mongoose  = require('mongoose'),
     bcrypt    = require('bcrypt-nodejs')
 
 var userSchema = new mongoose.Schema({
-  exp-level: String,
-  local: {
+    username: String,
+    expLevel: String,
+    local: {
     email: String,
     password: String,
   },
@@ -14,7 +15,7 @@ var userSchema = new mongoose.Schema({
     email: String,
     name: String
   },
-  favorites[{type: mongoose.Schema.ObjectId, ref: 'Api'}]
+  favorites: [{type: mongoose.Schema.ObjectId, ref: 'Api'}]
 })
 
 

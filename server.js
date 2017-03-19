@@ -6,7 +6,8 @@ var express = require('express'),
     port = process.env.PORT || 3000,
     app = express(),
     passport = require('passport'),
-    session = require('express-session')
+    session = require('express-session'),
+    routes = require('./config/routes')
 
 // connect database
 mongoose.connect( 'mongodb://localhost/jukebox' )
@@ -20,6 +21,7 @@ app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
+app.use('/users', routes)
 
 // root route
 app.get('/', function(req, res){
