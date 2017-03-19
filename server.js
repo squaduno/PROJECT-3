@@ -7,7 +7,9 @@ var express = require('express'),
     app = express(),
     passport = require('passport'),
     session = require('express-session'),
-    routes = require('./config/routes')
+    flash   = require('connect-flash'),
+    routes  = require('./config/routes')
+
 
 // connect database
 mongoose.connect( 'mongodb://localhost/jukebox' )
@@ -23,12 +25,18 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/users', routes)
 
+app.use(session({ secret: 'jukebox_api' }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+require('./config/passport')(passport);
 // root route
 app.get('/', function(req, res){
   res.send('Hello Jukebox')
 })
 
-
+app.use('/', routes)
 app.listen(port, function(req, res){
   console.log('The jukebox is running on', port)
 })
