@@ -3,23 +3,34 @@ var express = require('express'),
     usersController = require('../controllers/users')
 
 
-    function authenticateUser(req, res, next) {
-      // If the user is authenticated, then we continue the execution
-      if (req.isAuthenticated()) return next();
+// require controllers
+    //for api
+var {apiIndex, apiShow} = require('../controllers/apis'),
+    //for users
+    {index, create} = require('../controllers/users')
 
-      // Otherwise the request is always redirected to the home page
-      res.redirect('/');
-    }
+//this is for users
+router.route('/')
+  .get(index)
+  .post(create)
 
-    router.route('/signup')
-      .get(usersController.getSignup)
-      .post(usersController.postSignup)
+function authenticateUser(req, res, next) {
+  // If the user is authenticated, then we continue the execution
+  if (req.isAuthenticated()) return next();
 
-    router.route('/login')
-      .get(usersController.getLogin)
-      .post(usersController.postLogin)
+  // Otherwise the request is always redirected to the home page
+  res.redirect('/');
+}
 
-    router.route("/logout")
-      .get(usersController.getLogout)
+router.route('/signup')
+  .get(usersController.getSignup)
+  .post(usersController.postSignup)
+
+router.route('/login')
+  .get(usersController.getLogin)
+  .post(usersController.postLogin)
+
+router.route("/logout")
+  .get(usersController.getLogout)
 
 module.exports = router

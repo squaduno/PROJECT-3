@@ -42,7 +42,6 @@ function secret(request, response){
 }
 
 
-
 function index(req, res) {
   User.find({}, function(err, users){
     if (err) throw err
@@ -61,6 +60,7 @@ function create(req, res){
 
 module.exports = {
   index: index,
+<<<<<<< HEAD
   create: create,
   getLogin: getLogin,
   postLogin: postLogin ,
@@ -68,4 +68,7 @@ module.exports = {
   postSignup: postSignup,
   getLogout: getLogout,
   secret: secret
+=======
+  create: create
+>>>>>>> be3ec24375db42dda39bfbe4f2e862145e0010b3
 }

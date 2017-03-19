@@ -10,6 +10,7 @@ var express = require('express'),
     flash   = require('connect-flash'),
     routes  = require('./config/routes')
 
+
 // connect database
 mongoose.connect( 'mongodb://localhost/jukebox' )
 
@@ -22,6 +23,7 @@ app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
+app.use('/users', routes)
 
 app.use(session({ secret: 'jukebox_api' }));
 app.use(passport.initialize());
