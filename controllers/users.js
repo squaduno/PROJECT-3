@@ -102,9 +102,10 @@ module.exports = {
   update: update,
   destroy: destroy,
   getLogin: getLogin,
-  postLogin: postLogin ,
+  postLogin: postLogin,
   getSignup: getSignup,
   postSignup: postSignup,
   getLogout: getLogout,
-  secret: secret
+  secret: secret,
+  create: create
 }
