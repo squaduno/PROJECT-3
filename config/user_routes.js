@@ -2,8 +2,10 @@ var express = require('express'),
     router = express.Router()
 
 // require controllers
+
 //for users
 var {index, show, create, update, destroy, getSignup, postSignup, getLogin, postLogin, getLogout} = require('../controllers/users')
+
 
 //this is for users
 router.route('/')
@@ -26,6 +28,7 @@ function authenticateUser(req, res, next) {
   res.redirect('/');
 }
 
+
 router.route('/signup')
   .get(getSignup)
   .post(postSignup)
@@ -36,5 +39,15 @@ router.route('/login')
 
 router.route("/logout")
   .get(getLogout)
+
+  //
+
+
+  router.route('/api/:id')
+  	.patch(update)
+
+  	.delete(destroy)
+
+
 
 module.exports = router
