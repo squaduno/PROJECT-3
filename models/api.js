@@ -23,8 +23,7 @@ var apiSchema = new mongoose.Schema({
   rating: {
     install: Number,
     readability: Number,
-    technicality: Number,
-
+    technicality: Number
   },
   userRating: [userRatingSchema]
 })
