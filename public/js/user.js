@@ -24,7 +24,16 @@ function userSaved (req, res){
   res.redirect('/apis')
 }else{
   res.redirect('/getSignup')
-}
-}
+}}
+
+function deleteUser(id){
+$.ajax({
+  url: `/user/:id`,
+  method: 'delete'
+}).done(function(data){
+  $(`user${id}`).remove()
+  console.log('User deleted')
+  })
+
 
 //////END OF AJAX ////////
