@@ -1,39 +1,29 @@
-////////AJAX//////////////
-$(document).ready(function(){
-  $('form#newUser').on('submit', sendUserViaAjax)
-})
+$(document).ready(function() {
+  $('signUpForm').submit(function(event) {
+    var user = {
+      username: $('form#signUpForm input#userName').val(),
+      email: $('form#signUpForm input#userEmail').val(),
+      password: $('form#signUpForm input#userPassword').val()
+    }
+    $.ajax({
+      type    : 'GET',
+      url     : 'authentication/signup',
+      data    : user,
+      dataType: 'json',
+      encode  : true
+    }).done(function(data) {
+      console.log(data)
+    })
 
-function sendUserViaAjax(e){
-  e.preventDefault()
-}
-
-var user = {
-  username: $('form#signUpForm input#userName').val(),
-  email: $('form#signUpForm input#userEmail').val(),
-  password: $('form#signUpForm input#userPassword').val()
-}
-
-
-$.post('/users', user)
-.done(function(data){
-  addUser(data)
-})
-
-function userSaved (req, res){
-  if (user.save()){
-  res.redirect('/apis')
-}else{
-  res.redirect('/getSignup')
-}}
-
-function deleteUser(id){
-$.ajax({
-  url: `/user/:id`,
-  method: 'delete'
-}).done(function(data){
-  $(`user${id}`).remove()
-  console.log('User deleted')
+    $.ajax({
+      type    : 'POST',
+      url     : 'authentication/signup',
+      data    : user,
+      dataType: 'json',
+      encode  : true
+    }).done(function(data) {
+      console.log(data)
+    })
   })
-
-
-//////END OF AJAX ////////
+  event.preventDefault()
+});
