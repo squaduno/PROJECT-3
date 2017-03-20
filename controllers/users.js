@@ -49,6 +49,14 @@ function index(req, res) {
   })
 }
 
+function show(req, res) {
+  var id = req.params.id
+  User.findById({_id: id}, function(err, user) {
+    if (err) throw err
+    res.json(user)
+  })
+}
+
 function create(req, res){
   var newUser = new User(req.body)
   newUser.save(function(err, saveUser) {
@@ -89,13 +97,15 @@ function destroy(request, response) {
 
 module.exports = {
   index: index,
+  show: show,
   create: create,
   update: update,
   destroy: destroy,
   getLogin: getLogin,
-  postLogin: postLogin ,
+  postLogin: postLogin,
   getSignup: getSignup,
   postSignup: postSignup,
   getLogout: getLogout,
-  secret: secret
+  secret: secret,
+  create: create
 }

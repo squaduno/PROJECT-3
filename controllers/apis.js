@@ -1,5 +1,4 @@
-var User = require('../models/user'),
-    Api = require( '../models/api' )
+var Api = require('../models/api')
 
 function apiIndex(req, res) {
   Api.find({}, function(err, apis) {
@@ -9,7 +8,8 @@ function apiIndex(req, res) {
 }
 
 function apiShow(req, res) {
-  Api.find({}, function(err, user) {
+  var id = req.params.id
+  Api.findById({_id: id}, function(err, api) {
     if (err) throw err
     res.json(api)
   })
@@ -17,38 +17,42 @@ function apiShow(req, res) {
 
 function apiCreate(req, res) {
 var newApi = new Api(req.body)
+
+console.log(req.body)
 newApi.save(function(err, saveApi){
   if (err) throw err
   res.json(saveApi)
-})
+ })
+>>>>>>> b8ae99e2b18c372a59677b914fd7f3015613585f
 }
 
-
+// UPDATE
 function apiUpdate(req, res) {
-  var id = req.params.id
+var id = req.params.id
+Api.findById({_id: id}, function(err, api) {
+  if (err) throw err
+  // change api key values
+  if(req.body.name) api.name = req.body.name
+  if(req.body.about) api.about = req.body.about
+  if(req.body.url) api.url = req.body.url
+  //save the api
+  api.save(function(err) {
+    if (err) res.json({message: 'Something went wrong, could not save api'})
 
-  Api.findById(id, function(err, api) {
-    if (err || !api) throw err
-
-    api.completed = !api.completed
-
-    api.save(function(err, updatedApi) {
-      if (err) throw err
-
-      res.json(updatedApi)
-    })
-  })
+    res.json('Api successfully updated!')
+   })
+ })
 }
 
 function apiDestroy(req, res) {
   var id = req.params.id
-
   Api.remove({_id: id}, function(err) {
     if (err) throw err
 
-    res.json({message: 'destroyed.'})
+    res.json({message: 'Api removed from Jukebox.'})
   })
 }
+
 module.exports = {
   apiIndex: apiIndex,
   apiShow: apiShow,
@@ -56,11 +60,3 @@ module.exports = {
   apiUpdate: apiUpdate,
   apiDestroy: apiDestroy
 }
-
-
-
-
-
-
-
-//

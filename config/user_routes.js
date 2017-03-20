@@ -1,18 +1,24 @@
 var express = require('express'),
-    router = express.Router(),
-    usersController = require('../controllers/users')
-
+    router = express.Router()
 
 // require controllers
-    //for api
-var {apiIndex, apiShow, apiCreate, apiUpdate, apiDestroy} = require('../controllers/apis'),
-    //for users
-    {index, create} = require('../controllers/users')
+
+//for users
+var {index, show, create, update, destroy, getSignup, postSignup, getLogin, postLogin, getLogout} = require('../controllers/users')
+
 
 //this is for users
 router.route('/')
   .get(index)
   .post(create)
+
+router.route('/:id')
+  .get(show)
+  .post(update)
+
+router.route('/:id/delete')
+  .post(destroy)
+
 
 function authenticateUser(req, res, next) {
   // If the user is authenticated, then we continue the execution
@@ -24,15 +30,15 @@ function authenticateUser(req, res, next) {
 
 
 router.route('/signup')
-  .get(usersController.getSignup)
-  .post(usersController.postSignup)
+  .get(getSignup)
+  .post(postSignup)
 
 router.route('/login')
-  .get(usersController.getLogin)
-  .post(usersController.postLogin)
+  .get(getLogin)
+  .post(postLogin)
 
 router.route("/logout")
-  .get(usersController.getLogout)
+  .get(getLogout)
 
   //
 
