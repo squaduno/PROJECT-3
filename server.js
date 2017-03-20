@@ -37,7 +37,7 @@ app.get('/', function(req, res){
 })
 
 
-app.use('/', routes)
+// app.use('/', routes)
 
 app.listen(port, function(req, res){
   console.log('The jukebox is running on', port)

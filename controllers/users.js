@@ -60,15 +60,13 @@ function create(req, res){
 
 module.exports = {
   index: index,
-<<<<<<< HEAD
   create: create,
   getLogin: getLogin,
-  postLogin: postLogin ,
+  postLogin: postLogin,
   getSignup: getSignup,
   postSignup: postSignup,
   getLogout: getLogout,
-  secret: secret
-=======
+  secret: secret,
   create: create
->>>>>>> be3ec24375db42dda39bfbe4f2e862145e0010b3
+
 }
