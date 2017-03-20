@@ -5,7 +5,7 @@ var express = require('express'),
 
 // require controllers
     //for api
-var {apiIndex, apiShow} = require('../controllers/apis'),
+var {apiIndex, apiShow, apiCreate, apiUpdate, apiDestroy} = require('../controllers/apis'),
     //for users
     {index, create} = require('../controllers/users')
 
@@ -21,6 +21,9 @@ function authenticateUser(req, res, next) {
   // Otherwise the request is always redirected to the home page
   res.redirect('/');
 }
+
+router.route('/apis')
+  .get(apisController.getapiShow)
 
 router.route('/signup')
   .get(usersController.getSignup)
