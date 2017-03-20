@@ -1,41 +1,10 @@
-$(document).ready(function(){
-  $('form#newUser').on('submit', sendUserViaAjax)
-})
-
 var User = require('../models/user')
     passport = require('passport')
 
 function getSignup(request, response) {
   response.render('authentication/signup.ejs', {message: request.flash('signupMessage')})
 }
-////////AJAX//////////////
 
-
-function sendUserViaAjax(e){
-  e.preventDefault()
-}
-
-var user = {
-  username: $('form#signUpForm input#userName').val(),
-  email: $('form#signUpForm input#userEmail').val(),
-  password: $('form#signUpForm input#userPassword').val()
-}
-
-
-$.post('/users', user)
-.done(function(data){
-  addUser(data)
-})
-
-function userSaved (req, res){
-  if (user.save()){
-  res.redirect('/apis')
-}else{
-  res.redirect('/getSignup')
-}
-}
-
-//////END OF AJAX ////////
 function postSignup(request, response) {
   var signupStrategy = passport.authenticate(
     'local-signup', {
