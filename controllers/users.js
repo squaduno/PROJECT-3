@@ -73,7 +73,7 @@ User.findById({_id: id}, function(err, user) {
   if(req.body.username) user.username = req.body.username
   if(req.body.expLevel) user.expLevel = req.body.expLevel
   //save the user
-  User.save(function(err) {
+  user.save(function(err) {
     if (err) res.json({message: 'Something went wrong, could not save user'})
 
     res.json('User successfully updated!')
