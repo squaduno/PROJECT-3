@@ -15,13 +15,18 @@ function apiShow(req, res) {
   })
 }
 
+function apiNew(req, res){
+  res.render('apis/new')
+}
+
+
 function apiCreate(req, res) {
 var newApi = new Api(req.body)
 
 console.log(req.body)
 newApi.save(function(err, saveApi){
   if (err) throw err
-  res.json(saveApi)
+  res.redirect('/apis')
  })
 
 }
@@ -56,6 +61,7 @@ function apiDestroy(req, res) {
 module.exports = {
   apiIndex: apiIndex,
   apiShow: apiShow,
+  apiNew: apiNew,
   apiCreate: apiCreate,
   apiUpdate: apiUpdate,
   apiDestroy: apiDestroy

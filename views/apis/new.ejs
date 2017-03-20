@@ -1,42 +1,85 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Add a new API!</title>
-        <link rel="stylesheet" href="css/style.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script src="js/app.js"></script>
-        <% include ../partials/head %>
-        <% include ../partials/scripts %>
+
+        <%- include ../partials/head %>
     </head>
-    <body>
-      <h1>Add a new API!</h1>
-      <form id="new-api">
-        <input type="text" name='API Name:' id="api-name" placeholder="API Name:">
-        <input type="url" name='API Url:' id="api-url" placeholder="API url:">
-        <input type="text" name='API About:' id="api-about" placeholder="API About:">
-        <input type="checkbox" name='API Support:' id="api-support">
-        <input type="checkbox" name='API Paid:' id="api-paid">
-        <input type="checkbox" name='API Authentication:' id="api-authentication">
-        <input type="checkbox" name='API Deprecated:' id="api-deprecated">
-        <input type="number" name='API tools' id="api-tools" placeholder="API Tools:">
-
-        <select name="API-category" id="api-category">
-            <option value="Social Media">Social Media</option>
-            <option value="Product Advertising">Product Advertising</option>
-            <option value="Business Rating">French Cruller</option>
-            <option value="Yeast">Yeast</option>
-        </select>
-
-        <input type="text" name='API Install Rating:' id="api-rating-install" placeholder="API Install Rating:">
-        <input type="text" name='API Readability Rating:' id="api-rating-readability" placeholder="API Readability Rating:">
-        <input type="text" name='API Technicality Rating:' id="api-rating-technicality" placeholder="API Technicality Rating:">
-
-        <input type="submit" value='Save My API'>
+    <body class="container">
+      <%- include ../partials/header %>
+      <h1>Add a new API</h1>
+      <form action="/apis" method="POST">
+        <div class="form-group">
+          <label>Name:</label>
+          <input type="text" name='name' placeholder="Name" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Name:</label>
+          <input type="url" name='url' id="api-url" placeholder="URL" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>About:</label>
+          <input type="text" name='about' id="api-about" placeholder="About" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Support:</label>
+          <input type="checkbox" name='support' id="api-support" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Paid:</label>
+          <input type="checkbox" name='paid' id="api-paid" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Authenication:</label>
+          <input type="checkbox" name='authentication' id="api-authentication" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Deprecated:</label>
+          <input type="checkbox" name='deprecated' id="api-deprecated" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Tools:</label>
+          <input type="number" name='tools' id="api-tools" placeholder="Number of tools" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Category:</label>
+          <select name="category" id="api-category" class="form-control">
+              <option value="Music">Music</option>
+              <option value="Recommendations">Recommendations</option>
+              <option value="Transportation">Transportation</option>
+              <option value="Fitness">Fitness</option>
+              <option value="Social">Social</option>
+              <option value="Photos">Photos</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Real Estate">Real Estate</option>
+              <option value="Mapping">Mapping</option>
+              <option value="Weather">Weather</option>
+              <option value="Video">Video</option>
+          </select>
+        </div>
+        <div class="rated-categories">
+          <hr>
+          <h4>Ratings</h4>
+        <div class="form-group">
+          <label>Install:</label>
+          <input type="text" name='install' id="api-rating-install" placeholder="Installation Rating" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Readability:</label>
+          <input type="text" name='readability' id="api-rating-readability" placeholder="Readability Rating" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Technicality:</label>
+          <input type="text" name='technicality' id="api-rating-technicality" placeholder="Technicality Rating" class="form-control">
+        </div>
+        </div>
+        <div class="form-group">
+          <input type="submit" value='Save My API'>
+        </div>
 
       </form>
-      <% include ../partials/footer.ejs %>
+
+      <%- include ../partials/footer.ejs %>
+
     </body>
     <ul>
     </ul>

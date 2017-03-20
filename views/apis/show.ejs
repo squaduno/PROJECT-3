@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head')  %>
+  </head>
+  <body>
+    <%- include('../partials/header') %>
+    <div class="container">
+          <div class="">
+              <div><%= api.name %></div>
+              <div><%= api.about %></div>
+              <div><%= api.url %></div>
+              <div><%= api.support %></div>
+              <div><%= api.paid %></div>
+              <div><%= api.authentication %></div>
+              <div><%= api.deprecated %></div>
+              <div><%= api.tools %></div>
+              <div><%= api.category %></div>
+              <div><%= api.rating %></div>
+              <div><%= api.rating.install %></div>
+              <div><%= api.rating.readability %></div>
+              <div><%= api.rating.technicality %></div>
+          </div>
+    </div>
+    <%- include('../partials/footer') %>
+  </body>
+</html>
