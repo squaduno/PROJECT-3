@@ -16,7 +16,7 @@ var apiSchema = new mongoose.Schema({
   url: String,
   support: Boolean,
   paid: Boolean,
-  authenication: Boolean,
+  authentication: Boolean,
   deprecated: Boolean,
   tools: Number,
   category: String,

@@ -11,7 +11,7 @@
                         <h5><%= api.url %></h5>
                         <h5><%= api.authentication %></h5>
                         <h5><%= api.deprecated %></h5>
-                        <h5><%= api.tools %></h5>
+                        <h5><%= api.tools.count %></h5>
                         <h5><%= api.category %></h5>
                         <h5><%= api.rating %></h5>
                         <h6><%= api.rating.install %></h6>
@@ -21,14 +21,9 @@
                             <label for="comment"></label>
                             <textarea class="form-control" rows="5" id="comment"><%= api.about%>...</textarea>
                         </div>
-
-                        <div class="comnt">Comments
-                            <%= api.comments.count  %>
-                        </div>
                         <!-- <div class="btn more">
                             <%= link_to "More Details", api_path(api) %>
                         </div> -->
-
                     </div>
                     <% end %>
                 </div>
