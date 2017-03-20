@@ -57,15 +57,8 @@ function create(req, res){
   })
 }
 
-// function update(req, res) {
-//   User.findOneAndUpdate({id: req.params.id}, {username: req.body.username, expLevel: req.body.expLevel}, function(err, user) {
-//     if (err) throw err
-//     res.json(user)
-//   })
-// }
-
+// UPDATE
 function update(req, res) {
-//update function
 var id = req.params.id
 User.findById({_id: id}, function(err, user) {
   if (err) throw err
@@ -81,11 +74,23 @@ User.findById({_id: id}, function(err, user) {
  })
 }
 
+// DELETE
+function destroy(request, response) {
+  var id = request.params.id;
+
+  User.remove({_id: id}, function(error) {
+    if(error) response.json({message: 'Could not delete quote b/c:' + error});
+
+    response.json({message: 'User successfully deleted'});
+  });
+}
+
 
 module.exports = {
   index: index,
   create: create,
   update: update,
+  destroy: destroy,
   getLogin: getLogin,
   postLogin: postLogin ,
   getSignup: getSignup,

@@ -7,7 +7,7 @@ var express = require('express'),
     //for api
 var {apiIndex, apiShow} = require('../controllers/apis'),
     //for users
-    {index, create, update} = require('../controllers/users')
+    {index, create, update, destroy} = require('../controllers/users')
 
 //this is for users
 router.route('/')
@@ -16,6 +16,7 @@ router.route('/')
 
 router.route('/users/:id')
   .post(update)
+  .delete(destroy)
 
 function authenticateUser(req, res, next) {
   // If the user is authenticated, then we continue the execution
