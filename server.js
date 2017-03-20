@@ -38,8 +38,10 @@ app.get('/', function(req, res){
 })
 
 
+
 app.use('/users', userRoutes)
 app.use('/apis', apiRoutes)
+
 
 
 app.listen(port, function(req, res){
