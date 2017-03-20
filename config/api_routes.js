@@ -9,6 +9,9 @@ router.route('/')
   .get(apiIndex)
   .post(apiCreate)
 
+router.route('/new')
+  .post(apiCreate)
+
 router.route('/:id')
   .get(apiShow)
   .post(apiUpdate)
