@@ -1,47 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= include('partials/head')  %>
+    <%- include ../partials/head  %>
   </head>
   <body>
-    <%= include('partials/header') %>
-    <div class="row">
-            <div class="span11" style="overflow: auto">
-                <div class="thumbnail">
-
-                    <div class="row-fluid">
-                        <% apis.forEach(function(api)) %>
-                        <div class="col-lg-3">
-                            <h4><%= api.name %></h4>
-                            <h5><%= api.support %></h5>
-                            <h5><%= api.paid %></h5>
-                            <h5><%= api.url %></h5>
-                            <h5><%= api.authentication %></h5>
-                            <h5><%= api.deprecated %></h5>
-                            <h5><%= api.tools %></h5>
-                            <h5><%= api.category %></h5>
-                            <h5><%= api.rating %></h5>
-                            <h6><%= api.rating.install %></h6>
-                            <h6><%= api.rating.readability %></h6>
-                            <h6><%= api.rating.technicality %></h6>
-                            <div class="caption">
-                                <label for="comment"></label>
-                                <textarea class="form-control" rows="5" id="comment"><%= api.about%>...</textarea>
-                            </div>
-
-                            <!-- <div class="comnt">Comments
-                                <%= api.comments.count  %>
-                            </div> -->
-                            <!-- <div class="btn more">
-                                <%= link_to "More Details", api_path(api) %>
-                            </div> -->
-
-                        </div>
-                        <% end %>
-                    </div>
-                    <br>
-                </div>
-            </div>
-    <%= include('partials/footer') %>
+    <%- include ../partials/header %>
+    <div>
+          <% apis.forEach(function(api) { %>
+          <div class="">
+              <div><%= api.name %></div>
+              <div><%= api.about %></div>
+              <div><%= api.url %></div>
+              <div><%= api._id %></div>
+              <div><%= api.support %></div>
+              <div><%= api.paid %></div>
+              <div><%= api.authentication %></div>
+              <div><%= api.deprecated %></div>
+              <div><%= api.tools %></div>
+              <div><%= api.category %></div>
+              <div><%= api.rating %></div>
+              <div><%= api.rating.install %></div>
+              <div><%= api.rating.readability %></div>
+              <div><%= api.rating.technicality %></div>
+          </div>
+          <% }) %>
+    </div>
+    <%- include ../partials/footer %>
   </body>
 </html>
