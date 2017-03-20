@@ -36,7 +36,9 @@ app.get('/', function(req, res){
   res.send('Hello Jukebox')
 })
 
+
 app.use('/', routes)
+
 app.listen(port, function(req, res){
   console.log('The jukebox is running on', port)
 })
