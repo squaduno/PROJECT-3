@@ -24,16 +24,17 @@ function create(req, res){
 
 function update(req, res) {
 //update function
-var id = req.params._id
-User.findById(id, function(err, user) {
+var id = req.params.id
+User.findById({_id: id}, function(err, user) {
   if (err) throw err
   // change user username and expLevel
-  user.username = req.body.username
-  user.expLevel = req.body.expLevel
+  if(req.body.username) user.username = req.body.username
+  if(req.body.expLevel) user.expLevel = req.body.expLevel
   //save the user
   User.save(function(err) {
-    if (err) throw err
-    res.json('User successfully saved!')
+    if (err) res.json({message: 'Something went wrong, could not save user'})
+
+    res.json('User successfully updated!')
    })
  })
 }
