@@ -27,12 +27,12 @@ newApi.save(function(err, saveApi){
 function apiUpdate(req, res) {
   var id = req.params.id
 
-  Todo.findById(id, function(err, api) {
+  Api.findById(id, function(err, api) {
     if (err || !api) throw err
 
     api.completed = !api.completed
 
-    todo.save(function(err, updatedApi) {
+    api.save(function(err, updatedApi) {
       if (err) throw err
 
       res.json(updatedApi)

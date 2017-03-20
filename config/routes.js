@@ -7,18 +7,12 @@ var express = require('express'),
     //for api
 var {apiIndex, apiShow, apiCreate, apiUpdate, apiDestroy} = require('../controllers/apis'),
     //for users
-    {index, create, update, destroy} = require('../controllers/users')
+    {index, create} = require('../controllers/users')
 
 //this is for users
 router.route('/')
   .get(index)
   .post(create)
-
-router.route('/users/:id')
-  .post(update)
-
-router.route('/users/:id/delete')
-  .post(destroy)
 
 function authenticateUser(req, res, next) {
   // If the user is authenticated, then we continue the execution
@@ -28,8 +22,6 @@ function authenticateUser(req, res, next) {
   res.redirect('/');
 }
 
-router.route('/apis')
-  .get(apisController.getapiShow)
 
 router.route('/signup')
   .get(usersController.getSignup)
@@ -41,5 +33,15 @@ router.route('/login')
 
 router.route("/logout")
   .get(usersController.getLogout)
+
+  //
+
+
+  router.route('/api/:id')
+  	.patch(update)
+
+  	.delete(destroy)
+
+
 
 module.exports = router
