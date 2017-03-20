@@ -49,17 +49,45 @@ function index(req, res) {
   })
 }
 
-
 function create(req, res){
   var newUser = new User(req.body)
-  newUser.save(function(err, saveUser){
+  newUser.save(function(err, saveUser) {
     if (err) throw err
     res.json(saveUser)
   })
 }
 
+// function update(req, res) {
+//   User.findOneAndUpdate({id: req.params.id}, {username: req.body.username, expLevel: req.body.expLevel}, function(err, user) {
+//     if (err) throw err
+//     res.json(user)
+//   })
+// }
+
+function update(req, res) {
+//update function
+var id = req.params.id
+User.findById({_id: id}, function(err, user) {
+  if (err) throw err
+  // change user username and expLevel
+  if(req.body.username) user.username = req.body.username
+  if(req.body.expLevel) user.expLevel = req.body.expLevel
+  //save the user
+  User.save(function(err) {
+    if (err) res.json({message: 'Something went wrong, could not save user'})
+
+    res.json('User successfully updated!')
+   })
+ })
+}
+
+
 module.exports = {
   index: index,
+<<<<<<< HEAD
+  create: create,
+  update: update
+=======
 <<<<<<< HEAD
   create: create,
   getLogin: getLogin,
@@ -71,4 +99,5 @@ module.exports = {
 =======
   create: create
 >>>>>>> be3ec24375db42dda39bfbe4f2e862145e0010b3
+>>>>>>> 369845d684340ba3cba83449d5b3b52b3427f6b1
 }
