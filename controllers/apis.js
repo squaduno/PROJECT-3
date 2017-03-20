@@ -23,7 +23,7 @@ newApi.save(function(err, saveApi){
   if (err) throw err
   res.json(saveApi)
  })
->>>>>>> b8ae99e2b18c372a59677b914fd7f3015613585f
+
 }
 
 // UPDATE
