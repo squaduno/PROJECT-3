@@ -8,7 +8,8 @@ var express = require('express'),
     passport = require('passport'),
     session = require('express-session'),
     flash   = require('connect-flash'),
-    routes  = require('./config/routes')
+    apiRoutes  = require('./config/api_routes'),
+    userRoutes  = require('./config/user_routes')
 
 
 // connect database
@@ -23,7 +24,6 @@ app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
-app.use('/users', routes)
 
 app.use(session({ secret: 'jukebox_api' }));
 app.use(passport.initialize());
@@ -37,7 +37,9 @@ app.get('/', function(req, res){
 })
 
 
-app.use('/', routes)
+app.use('/users', userRoutes)
+app.use('/apis', apiRoutes)
+
 
 app.listen(port, function(req, res){
   console.log('The jukebox is running on', port)
