@@ -3,7 +3,7 @@ var Api = require('../models/api')
 function apiIndex(req, res) {
   Api.find({}, function(err, apis) {
     if (err) throw err
-    res.json(apis)
+    res.render('apis/index', {apis: apis})
   })
 }
 
@@ -11,7 +11,7 @@ function apiShow(req, res) {
   var id = req.params.id
   Api.findById({_id: id}, function(err, api) {
     if (err) throw err
-    res.json(api)
+    res.render('apis/show', {api: api})
   })
 }
 

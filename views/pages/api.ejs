@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../views/partials/head %>
+  <% include ../views/partials/scripts %>
+  <body>
+    <% include ../views/partials/header %>
+     <meta charset="utf-8">
+    <title><%= api.name %></title>
+    <div class="row-fluid">
+        <div class="col-lg-3">
+            <h4><%= api.name %></h4>
+            <h5><%= api.support %></h5>
+            <h5><%= api.paid %></h5>
+            <h5><%= api.url %></h5>
+            <h5><%= api.authentication %></h5>
+            <h5><%= api.deprecated %></h5>
+            <h5><%= api.tools.count %></h5>
+            <h5><%= api.category %></h5>
+            <h5><%= api.rating %></h5>
+            <h6><%= api.rating.install %></h6>
+            <h6><%= api.rating.readability %></h6>
+            <h6><%= api.rating.technicality %></h6>
+        </div>
+  <% include ../views/partials/footer.ejs %> 
+  </body>
+</html>
