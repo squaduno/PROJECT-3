@@ -1,7 +1,6 @@
 var User = require('../models/user')
     passport = require('passport')
 
-
 function getSignup(request, response) {
   response.render('authentication/signup.ejs', {message: request.flash('signupMessage')})
 }
@@ -40,7 +39,6 @@ function getLogout(request, response) {
 function secret(request, response){
   response.render('secret.ejs')
 }
-
 
 function index(req, res) {
   User.find({}, function(err, users){
