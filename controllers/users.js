@@ -49,18 +49,48 @@ function index(req, res) {
   })
 }
 
-
 function create(req, res){
   var newUser = new User(req.body)
-  newUser.save(function(err, saveUser){
+  newUser.save(function(err, saveUser) {
     if (err) throw err
     res.json(saveUser)
   })
 }
 
+// UPDATE
+function update(req, res) {
+var id = req.params.id
+User.findById({_id: id}, function(err, user) {
+  if (err) throw err
+  // change user username and expLevel
+  if(req.body.username) user.username = req.body.username
+  if(req.body.expLevel) user.expLevel = req.body.expLevel
+  //save the user
+  user.save(function(err) {
+    if (err) res.json({message: 'Something went wrong, could not save user'})
+
+    res.json('User successfully updated!')
+   })
+ })
+}
+
+// DELETE
+function destroy(request, response) {
+  var id = request.params.id;
+
+  User.remove({_id: id}, function(error) {
+    if(error) response.json({message: 'Could not delete quote b/c:' + error});
+
+    response.json({message: 'User successfully deleted'});
+  });
+}
+
+
 module.exports = {
   index: index,
   create: create,
+  update: update,
+  destroy: destroy,
   getLogin: getLogin,
   postLogin: postLogin,
   getSignup: getSignup,
