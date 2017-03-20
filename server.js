@@ -13,7 +13,8 @@ var express = require('express'),
 
 
 // connect database
-mongoose.connect( 'mongodb://localhost/jukebox' )
+var dbUri = process.env.MONGODB_URI || 'mongodb://localhost/jukebox'
+mongoose.connect(dbUri)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
