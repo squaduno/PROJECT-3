@@ -84,20 +84,12 @@ User.findById({_id: id}, function(err, user) {
 
 module.exports = {
   index: index,
-<<<<<<< HEAD
   create: create,
-  update: update
-=======
-<<<<<<< HEAD
-  create: create,
+  update: update,
   getLogin: getLogin,
   postLogin: postLogin ,
   getSignup: getSignup,
   postSignup: postSignup,
   getLogout: getLogout,
   secret: secret
-=======
-  create: create
->>>>>>> be3ec24375db42dda39bfbe4f2e862145e0010b3
->>>>>>> 369845d684340ba3cba83449d5b3b52b3427f6b1
 }

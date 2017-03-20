@@ -14,10 +14,9 @@ router.route('/')
   .get(index)
   .post(create)
 
-<<<<<<< HEAD
 router.route('/users/:id')
   .post(update)
-=======
+
 function authenticateUser(req, res, next) {
   // If the user is authenticated, then we continue the execution
   if (req.isAuthenticated()) return next();
@@ -36,6 +35,5 @@ router.route('/login')
 
 router.route("/logout")
   .get(usersController.getLogout)
->>>>>>> 369845d684340ba3cba83449d5b3b52b3427f6b1
 
 module.exports = router
