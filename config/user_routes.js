@@ -4,6 +4,14 @@ var express         = require('express'),
     passport        = require('passport'),
     bodyParser      = require('body-parser');
 
+    function authenticateUser(req, res, next) {
+      // If the user is authenticated, then we continue the execution
+      if (req.isAuthenticated()) return next();
+
+      // Otherwise the request is always redirected to the home page
+      res.redirect('/');
+    }
+    
 //this is for users
   router.route('/')
   .get(index)
@@ -27,12 +35,5 @@ var express         = require('express'),
   .post(destroy)
 
 
-function authenticateUser(req, res, next) {
-  // If the user is authenticated, then we continue the execution
-  if (req.isAuthenticated()) return next();
-
-  // Otherwise the request is always redirected to the home page
-  res.redirect('/');
-}
 
 module.exports = router

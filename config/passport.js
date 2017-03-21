@@ -36,7 +36,6 @@ module.exports    = function(passport){
           newUser.local.password = newUser.encrypt(password);
 
           newUser.save(function(err) {
-            console.log('here');
             if (err) throw err;
             return callback(null, newUser);
           });
