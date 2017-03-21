@@ -22,13 +22,11 @@ function apiNew(req, res){
 
 function apiCreate(req, res) {
 var newApi = new Api(req.body)
-
 console.log(req.body)
 newApi.save(function(err, saveApi){
   if (err) throw err
   res.redirect('/apis')
  })
-
 }
 
 // UPDATE

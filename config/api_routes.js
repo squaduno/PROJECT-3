@@ -10,8 +10,7 @@ router.route('/')
   .post(apiCreate)
 
 router.route('/new')
-
-  .post(apiCreate)
+  .get(apiNew)
 
 
 
