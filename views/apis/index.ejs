@@ -21,9 +21,9 @@
               <div><%= api.install %></div>
               <div><%= api.readability %></div>
               <div><%= api.technicality %></div>
-              <button class="delBtn">Delete</button>
+              <button class="delBtn" id="<%= api._id %>">Delete</button>
+              <a href="/apis/<%- api._id %>">Show more</a>
           </div>
-          <a href="/apis/<%- api._id %>">Show more</a>
 <br>
           <% }) %>
     </div>

@@ -18,8 +18,6 @@ router.route('/:id/edit')
 router.route('/:id')
   .post(apiUpdate)
   .get(apiShow)
-
-router.route('/:id/delete')
   .delete(apiDestroy)
 
 module.exports = router

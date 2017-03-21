@@ -72,7 +72,7 @@ function apiDestroy(req, res) {
   Api.remove({_id: id}, function(err) {
     if (err) throw err
 
-    res.redirect('/apis')
+    res.json({message: "Api deleted"})
     })
   }
 
