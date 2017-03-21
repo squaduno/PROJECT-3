@@ -33,6 +33,7 @@ function apiEdit(req, res){
   var id = req.params.id
   Api.findById({_id: id}, function(err, api) {
     if (err) throw err
+    console.log(api.support);
     res.render('apis/edit', {api: api})
   })
 }
