@@ -1,8 +1,7 @@
 require('dotenv').config()
 
 var mongoose = require('./database'),
-    Api = require('../models/api'),
-    User = require('../models/user')
+    Api = require('../models/api')
 
 var apis = [
   {
@@ -184,16 +183,6 @@ var apis = [
     }
   },
 
-var users = [
-    {
-      username: "Tim Seo",
-      expLevel: "beginner",
-      local: {
-        email: "g@g.com",
-        password: 'password'
-      }
-  }
-]
 
 
 
