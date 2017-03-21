@@ -1,8 +1,10 @@
 var express         = require('express'),
     router          = express.Router(),
+    bodyParser      = require('body-parser'),
     {index, show, create, update, destroy, getSignup, postSignup, getLogin, postLogin, getLogout} = require('../controllers/users'),
-    passport        = require('passport'),
-    bodyParser      = require('body-parser');
+    methodOverride  = require('method-override'),
+    passport        = require('passport');
+
 
     function authenticateUser(req, res, next) {
       // If the user is authenticated, then we continue the execution
@@ -11,7 +13,7 @@ var express         = require('express'),
       // Otherwise the request is always redirected to the home page
       res.redirect('/');
     }
-    
+
 //this is for users
   router.route('/')
   .get(index)
