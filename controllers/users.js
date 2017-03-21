@@ -1,6 +1,8 @@
 var User = require('../models/user')
     passport = require('passport')
 
+
+
 function getSignup(request, response) {
   response.render('authentication/signup.ejs', {message: request.flash('signupMessage')})
 }
@@ -8,8 +10,9 @@ function getSignup(request, response) {
 function postSignup(request, response) {
   var signupStrategy = passport.authenticate(
     'local-signup', {
-      successRedirect: '/',
-      failureRedirect: '/signup',
+
+      successRedirect: '/users',
+      failureRedirect: '/users/signup',
       failureFlash: true
     }
   )
@@ -23,8 +26,8 @@ function getLogin(request, response) {
 
 function postLogin(request, response) {
   var loginProperty = passport.authenticate('local-login', {
-    successRedirect: '/',
-    failureRedirect: '/login',
+    successRedirect: 'users/',
+    failureRedirect: 'users/login',
     failureFlash: true
   })
 
@@ -36,9 +39,6 @@ function getLogout(request, response) {
   response.redirect('/');
 }
 
-function secret(request, response){
-  response.render('secret.ejs')
-}
 
 function index(req, res) {
   User.find({}, function(err, users){
@@ -103,7 +103,5 @@ module.exports = {
   postLogin: postLogin,
   getSignup: getSignup,
   postSignup: postSignup,
-  getLogout: getLogout,
-  secret: secret,
-  create: create
+  getLogout: getLogout
 }
