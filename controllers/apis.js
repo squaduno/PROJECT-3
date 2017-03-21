@@ -29,6 +29,14 @@ newApi.save(function(err, saveApi){
  })
 }
 
+function apiEdit(req, res){
+  var id = req.params.id
+  Api.findById({_id: id}, function(err, api) {
+    if (err) throw err
+    res.render('apis/edit', {api: api})
+  })
+}
+
 // UPDATE
 function apiUpdate(req, res) {
 var id = req.params.id
@@ -38,11 +46,22 @@ Api.findById({_id: id}, function(err, api) {
   if(req.body.name) api.name = req.body.name
   if(req.body.about) api.about = req.body.about
   if(req.body.url) api.url = req.body.url
+  if(req.body.support) api.support = req.body.support
+  if(req.body.paid) api.paid = req.body.paid
+  if(req.body.authentication) api.authentication = req.body.authentication
+  if(req.body.deprecated) api.deprecated = req.body.deprecated
+  if(req.body.tools) api.tools = req.body.tools
+  if(req.body.category) api.category = req.body.category
+  if(req.body.install) api.install = req.body.install
+  if(req.body.readability) api.readability = req.body.readability
+  if(req.body.technicality) api.technicality = req.body.technicality
   //save the api
+  console.log(req.body)
   api.save(function(err) {
     if (err) res.json({message: 'Something went wrong, could not save api'})
 
-    res.json('Api successfully updated!')
+    console.log("Update successful");
+    res.redirect('/apis/' + id)
    })
  })
 }
@@ -52,15 +71,17 @@ function apiDestroy(req, res) {
   Api.remove({_id: id}, function(err) {
     if (err) throw err
 
-    res.json({message: 'Api removed from Jukebox.'})
-  })
-}
+    res.redirect('/apis')
+    })
+  }
+
 
 module.exports = {
   apiIndex: apiIndex,
   apiShow: apiShow,
   apiNew: apiNew,
   apiCreate: apiCreate,
+  apiEdit: apiEdit,
   apiUpdate: apiUpdate,
   apiDestroy: apiDestroy
 }
