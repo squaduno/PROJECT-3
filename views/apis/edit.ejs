@@ -9,39 +9,39 @@
       <form action="/apis/<%= api._id %>" method="POST">
         <div class="form-group">
           <label>Name:</label>
-          <input type="text" name='name' value="<%= api.name %>" placeholder="Name" class="form-control">
+          <input type="text" name='name' value="<%- api.name %>" placeholder="Name" class="form-control">
         </div>
         <div class="form-group">
           <label>Url:</label>
-          <input type="url" name='url' value="<%= api.url %>" id="api-url" placeholder="URL" class="form-control">
+          <input type="url" name='url' value="<%- api.url %>" id="api-url" placeholder="URL" class="form-control">
         </div>
         <div class="form-group">
           <label>About:</label>
-          <input type="text" name='about' value="<%= api.about %>" id="api-about" placeholder="About" class="form-control">
+          <input type="text" name='about' value="<%- api.about %>" id="api-about" placeholder="About" class="form-control">
         </div>
         <div class="form-group">
           <label>Support:</label>
-          <input type="checkbox" name='support' value="<%= api.support %>" id="api-support" class="form-control">
+          <input type="checkbox" name='support' value="<%- api.support %>" id="api-support" class="form-control">
         </div>
         <div class="form-group">
           <label>Paid:</label>
-          <input type="checkbox" name="paid" value="<%= api.paid %>" id="api-paid" class="form-control">
+          <input type="checkbox" name="paid" value="<%- api.paid %>" id="api-paid" class="form-control">
         </div>
         <div class="form-group">
           <label>Authenication:</label>
-          <input type="checkbox" name='authentication' value="<%= api.authenication %>" id="api-authentication" class="form-control">
+          <input type="checkbox" name='authentication' value="<%- api.authenication %>" id="api-authentication" class="form-control">
         </div>
         <div class="form-group">
           <label>Deprecated:</label>
-          <input type="checkbox" name='deprecated' value="<%= api.deprecated %>" id="api-deprecated" class="form-control">
+          <input type="checkbox" name='deprecated' value="<%- api.deprecated %>" id="api-deprecated" class="form-control">
         </div>
         <div class="form-group">
           <label>Tools:</label>
-          <input type="number" name='tools' value="<%= api.tools %>" id="api-tools" placeholder="Number of tools" class="form-control">
+          <input type="number" name='tools' value="<%- api.tools %>" id="api-tools" placeholder="Number of tools" class="form-control">
         </div>
         <div class="form-group">
           <label>Category:</label>
-          <select name="category" value="<%= api.category %>" id="api-category" class="form-control">
+          <select name="category" value="<%- api.category %>" id="api-category" class="form-control">
               <option value="Music">Music</option>
               <option value="Recommendations">Recommendations</option>
               <option value="Transportation">Transportation</option>
@@ -60,20 +60,21 @@
           <h4>Ratings</h4>
         <div class="form-group">
           <label>Install:</label>
-          <input type="text" name='install' value="<%= api.install %>" id="api-install" placeholder="Rate 1 - 5" class="form-control">
+          <input type="text" name='install' value="<%- api.install %>" id="api-install" placeholder="Rate 1 - 5" class="form-control">
         </div>
         <div class="form-group">
           <label>Readability:</label>
-          <input type="text" name='readability' value="<%= api.readability %>" id="api-readability" placeholder="Rate 1 -5" class="form-control">
+          <input type="text" name='readability' value="<%- api.readability %>" id="api-readability" placeholder="Rate 1 -5" class="form-control">
         </div>
         <div class="form-group">
           <label>Technicality:</label>
-          <input type="text" name='technicality' value="<%= api.technicality %>" id="api-technicality" placeholder="Rate 1 - 5" class="form-control">
+          <input type="text" name='technicality' value="<%- api.technicality %>" id="api-technicality" placeholder="Rate 1 - 5" class="form-control">
         </div>
         </div>
         <div class="form-group">
           <input type="submit" value='Update API'>
         </div>
+        <a href="/apis/<%- api._id%>">Back</a>
 
       </form>
 
