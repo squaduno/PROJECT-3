@@ -1,5 +1,5 @@
-var User = require('../models/user')
-    passport = require('passport')
+var User      = require('../models/user')
+    passport  = require('passport')
 
 
 
@@ -23,8 +23,8 @@ function getLogin(request, response) {
 
 function postLogin(request, response) {
   var loginProperty = passport.authenticate('local-login', {
-    successRedirect: 'users/',
-    failureRedirect: 'users/login',
+    successRedirect: '/',
+    failureRedirect: '/login',
     failureFlash: true
   })
 
@@ -66,7 +66,7 @@ var id = req.params.id
 User.findById({_id: id}, function(err, user) {
   if (err) throw err
   // change user username and expLevel
-  if(req.body.username) user.username = req.body.username
+  if(req.body.name) user.name = req.body.name
   if(req.body.expLevel) user.expLevel = req.body.expLevel
   //save the user
   user.save(function(err) {
