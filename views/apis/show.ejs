@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%- include('../partials/head')  %>
+    <%- include ../partials/head  %>
   </head>
   <body>
-    <%- include('../partials/header') %>
+    <%- include ../partials/header %>
     <div class="container">
           <div class="">
               <div><%= api.name %></div>
               <div><%= api.about %></div>
               <div><%= api.url %></div>
               <div><%= api.support %></div>
-              <div><%= api.paid %></div>
+              <div><%= api.free %></div>
               <div><%= api.authentication %></div>
               <div><%= api.deprecated %></div>
               <div><%= api.tools %></div>
@@ -20,7 +20,10 @@
               <div><%= api.readability %></div>
               <div><%= api.technicality %></div>
           </div>
+          <a href="/apis/<%- api._id%>/edit">Edit</a>
+          <button class="delBtn" id="<%= api._id %>">Delete</button>
+          <a href="/apis">Back</a>
     </div>
-    <%- include('../partials/footer') %>
+    <%- include ../partials/footer %>
   </body>
 </html>

@@ -20,6 +20,6 @@ router.route('/:id')
   .get(apiShow)
 
 router.route('/:id/delete')
-  .post(apiDestroy)
+  .delete(apiDestroy)
 
 module.exports = router

@@ -15,7 +15,7 @@ var apiSchema = new mongoose.Schema({
   about: String,
   url: {type: String, required: true, unique: true},
   support: {type: Boolean, default: false},
-  paid: {type: Boolean, default: false},
+  free: {type: Boolean, default: false},
   authentication: {type: Boolean, default: false},
   deprecated: {type: Boolean, default: false},
   tools: Number,
