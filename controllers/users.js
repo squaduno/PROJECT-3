@@ -40,7 +40,6 @@ function secret(request, response){
   response.render('secret.ejs')
 }
 
-
 function index(req, res) {
   User.find({}, function(err, users){
     if (err) throw err

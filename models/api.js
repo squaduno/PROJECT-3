@@ -20,6 +20,12 @@ var apiSchema = new mongoose.Schema({
   deprecated: {type: Boolean, default: false},
   tools: Number,
   category: String,
+  rating: {
+    install: Number,
+    readability: Number,
+    technicality: Number
+  },
+
   install: {type: Number, min: 1, max: 5, default: 1},
   readability: {type: Number, min: 1, max: 5, default: 1},
   technicality: {type: Number, min: 1, max: 5, default: 1},
