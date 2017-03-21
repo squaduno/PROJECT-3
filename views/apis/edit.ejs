@@ -12,7 +12,7 @@
           <input type="text" name='name' value="<%- api.name %>" placeholder="Name" class="form-control">
         </div>
         <div class="form-group">
-          <label>Url:</label>
+          <label>URL:</label>
           <input type="url" name='url' value="<%- api.url %>" id="api-url" placeholder="URL" class="form-control">
         </div>
         <div class="form-group">
@@ -20,7 +20,7 @@
           <input type="text" name='about' value="<%- api.about %>" id="api-about" placeholder="About" class="form-control">
         </div>
         <div class="form-group">
-          <label>Support:</label>
+          <label>Support provided:</label>
           <% if (api.support) { %>
           <input type="checkbox" checked name='support' id="api-support" class="form-control">
           <% } else { %>
@@ -28,7 +28,7 @@
           <% } %>
         </div>
         <div class="form-group">
-          <label>Paid:</label>
+          <label>Free:</label>
           <% if (api.free) { %>
           <input type="checkbox" checked name="free" id="api-free" class="form-control">
           <% } else { %>
@@ -36,7 +36,7 @@
           <% } %>
         </div>
         <div class="form-group">
-          <label>Authenication:</label>
+          <label>Authenication offered:</label>
           <% if (api.authentication) { %>
           <input type="checkbox" checked name='authentication' id="api-authentication" class="form-control">
           <% } else { %>
@@ -52,7 +52,7 @@
           <% } %>
         </div>
         <div class="form-group">
-          <label>Tools:</label>
+          <label>Number of tools offered:</label>
           <input type="number" name='tools' value="<%- api.tools %>" id="api-tools" placeholder="Number of tools" class="form-control">
         </div>
         <div class="form-group">
