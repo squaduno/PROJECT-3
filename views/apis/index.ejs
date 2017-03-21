@@ -9,7 +9,6 @@
     <div class="container">
 
           <% apis.forEach(function(api) { %>
-<<<<<<< HEAD
             <button id="favoriteButton" type="button" onclick="alert('Favorited API!')"><img id="starButton" src="http://images.clipartpanda.com/clipart-star-RTA9RqzTL.png"></button>
           <div class="indexCss">
 
@@ -18,7 +17,7 @@
               <div class="margin"><label>Url: </label><%= api.url %></div>
               <div class="margin"><label>API Id: </label><%= api._id %></div>
               <div class="margin"><label>Support: </label><%= api.support %></div>
-              <div class="margin"><label>Paid: </label><%= api.paid %></div>
+              <div class="margin"><label>Free: </label><%= api.free %></div>
               <div class="margin"><label>Authentication: </label><%= api.authentication %></div>
               <div class="margin"><label>Deprecated: </label><%= api.deprecated %></div>
               <div class="margin"><label>Tools: </label><%= api.tools %></div>
@@ -27,9 +26,10 @@
               <div class="margin"><label>Install Rating: </label><%= api.rating.install %></div>
               <div class="margin"><label>Readability Rating: </label><%= api.rating.readability %></div>
               <div class="margin"><label>Technicality Rating: </label><%= api.rating.technicality %></div>
+              <button class="delBtn" id="<%= api._id %>">Delete</button>
+              <a href="/apis/<%- api._id %>">Show more</a>
 
           </div>
-          <a href="/apis/<%- api._id %>">Show more</a>
 <br>
           <% }) %>
     </div>

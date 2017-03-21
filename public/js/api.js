@@ -4,12 +4,13 @@ $(document).ready(function(){
 
   $('.delBtn').on('click', function(){
     var api = $(this)
+    var apiDiv = api.parent()
     var id = api.attr('id')
     $.ajax({
       method: "DELETE",
-      url: `/apis/${id}/delete`
+      url: `/apis/${id}`
     }).done(function(){
-      api.remove()
+      apiDiv.remove()
     })
   })
 
