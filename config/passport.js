@@ -71,10 +71,11 @@ module.exports = function(passport) {
 
 passport.use(new GitHubStrategy({
     authorizationURL: 'https://github.com/login/oauth/authorize',
-    tokenURL: 'https://github.com/login/oauth/token',
+    // tokenURL: 'https://github.com/login/oauth/token',
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: process.env.GITHUB_CALL_BACK_URL,
+    // callbackURL: process.env.GITHUB_CALL_BACK_URL,
+    
     },
   function(accessToken, refreshToken, profile, callback) {
     User.findOrCreate({ githubId: profile.id }, function (err, user) {
