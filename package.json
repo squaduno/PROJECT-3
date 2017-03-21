@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/evandynh/jukebox#readme",
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.1",
     "connect-flash": "^0.1.1",
@@ -28,6 +29,8 @@
     "express-ejs-layouts": "^2.2.0",
     "express-session": "^1.15.1",
     "mongoose": "^4.9.1",
+    "method-override": "~1.0.0",
+    "mongoose": "^4.9.0",
     "morgan": "^1.8.1",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",

@@ -4,7 +4,6 @@
 #### Intro
 
 Jukebox is an app tailored to developers that are interested in tapping into a third-party API. At Jukebox, users can find easy access to a consolidated list of popular APIs for their reference. By the click of a button, developers will have direct access to their documentation so that may view their installation instructions without having to scramble through Google searches to find them. This app will provide ratings for an API's documentation, support, tools, and installation difficulty.
->>>>>>> 59356af15da76a305eafae7cf65309b9be1f3bf4
 
 #### Data Models
 <img src="./project assets/DataModel1.jpg" style="width: 150px;">

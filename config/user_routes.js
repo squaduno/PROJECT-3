@@ -1,52 +1,40 @@
-var express = require('express'),
-    router = express.Router()
+var express         = require('express'),
+    router          = express.Router(),
+    bodyParser      = require('body-parser'),
+    {index, show, create, update, destroy, getSignup, postSignup, getLogin, postLogin, getLogout} = require('../controllers/users'),
+    methodOverride  = require('method-override'),
+    passport        = require('passport');
 
-// require controllers
 
-//for users
-var {index, show, create, update, destroy, getSignup, postSignup, getLogin, postLogin, getLogout} = require('../controllers/users')
+    function authenticateUser(req, res, next) {
+      // If the user is authenticated, then we continue the execution
+      if (req.isAuthenticated()) return next();
 
+      // Otherwise the request is always redirected to the home page
+      res.redirect('/');
+    }
 
 //this is for users
-router.route('/')
+  router.route('/')
   .get(index)
-  .post(create)
 
-router.route('/:id')
-  .get(show)
-  .post(update)
-
-router.route('/:id/delete')
-  .post(destroy)
-
-
-function authenticateUser(req, res, next) {
-  // If the user is authenticated, then we continue the execution
-  if (req.isAuthenticated()) return next();
-
-  // Otherwise the request is always redirected to the home page
-  res.redirect('/');
-}
-
-
-router.route('/signup')
+  router.route('/signup')
   .get(getSignup)
   .post(postSignup)
 
-router.route('/login')
+  router.route('/login')
   .get(getLogin)
   .post(postLogin)
 
-router.route("/logout")
+  router.route('/logout')
   .get(getLogout)
 
-  //
+  router.route('/:id')
+  .get(show)
+  .post(update)
 
-
-  router.route('/api/:id')
-  	.patch(update)
-
-  	.delete(destroy)
+  router.route('/:id/delete')
+  .post(destroy)
 
 
 

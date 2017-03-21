@@ -1,19 +1,19 @@
-var User = require('../models/user')
-    passport = require('passport')
+var User      = require('../models/user')
+    passport  = require('passport')
+
+
 
 function getSignup(request, response) {
   response.render('authentication/signup.ejs', {message: request.flash('signupMessage')})
 }
 
 function postSignup(request, response) {
-  var signupStrategy = passport.authenticate(
-    'local-signup', {
+  var signupStrategy = passport.authenticate('local-signup', {
       successRedirect: '/',
       failureRedirect: '/signup',
       failureFlash: true
     }
   )
-
   return signupStrategy(request, response);
 }
 
@@ -36,10 +36,6 @@ function getLogout(request, response) {
   response.redirect('/');
 }
 
-function secret(request, response){
-  response.render('secret.ejs')
-}
-
 
 function index(req, res) {
   User.find({}, function(err, users){
@@ -58,9 +54,9 @@ function show(req, res) {
 
 function create(req, res){
   var newUser = new User(req.body)
-  newUser.save(function(err, saveUser) {
+  newUser.save(function(err, newUser) {
     if (err) throw err
-    res.json(saveUser)
+    res.json(newUser)
   })
 }
 
@@ -71,7 +67,7 @@ var id = req.params.id
 User.findById({_id: id}, function(err, user) {
   if (err) throw err
   // change user username and expLevel
-  if(req.body.username) user.username = req.body.username
+  if(req.body.name) user.name = req.body.name
   if(req.body.expLevel) user.expLevel = req.body.expLevel
   //save the user
   user.save(function(err) {
@@ -104,7 +100,5 @@ module.exports = {
   postLogin: postLogin,
   getSignup: getSignup,
   postSignup: postSignup,
-  getLogout: getLogout,
-  secret: secret,
-  create: create
+  getLogout: getLogout
 }

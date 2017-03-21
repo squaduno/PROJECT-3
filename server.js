@@ -1,15 +1,17 @@
-var express = require('express'),
-    path = require('path'),
-    logger = require('morgan'),
-    bodyParser = require('body-parser'),
-    mongoose = require('mongoose'),
-    port = process.env.PORT || 3000,
-    app = express(),
-    passport = require('passport'),
-    session = require('express-session'),
-    flash   = require('connect-flash'),
-    apiRoutes  = require('./config/api_routes'),
-    userRoutes  = require('./config/user_routes')
+var express         = require('express'),
+    path            = require('path'),
+    logger          = require('morgan'),
+    bodyParser      = require('body-parser'),
+    mongoose        = require('mongoose'),
+    port            = process.env.PORT || 3000,
+    app             = express(),
+    LocalStrategy   = require('passport-local'),
+    passport        = require('passport'),
+    passportConfig  = require('./config/passport'),
+    session         = require('express-session'),
+    flash           = require('connect-flash'),
+    apiRoutes       = require('./config/api_routes'),
+    userRoutes      = require('./config/user_routes')
 
 
 // connect database
@@ -26,18 +28,22 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use(session({ secret: 'jukebox_api' }));
+app.use(session({ secret: 'JUKEBOX-API' }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-require('./config/passport')(passport);
+passportConfig(passport)
+
+
+app.use(function (req, res, next){
+  global.user = req.user
+  next()
+})
 // root route
 app.get('/', function(req, res){
   res.send('Hello Jukebox')
 })
-
-
 
 app.use('/users', userRoutes)
 app.use('/apis', apiRoutes)
@@ -45,5 +51,5 @@ app.use('/apis', apiRoutes)
 
 
 app.listen(port, function(req, res){
-  console.log('The jukebox is running on', port)
+  console.log('The jukebox is playing on', port)
 })
