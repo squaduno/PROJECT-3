@@ -1,24 +1,23 @@
-var LocalStrategy = require('passport-local').Strategy;
-var User          = require('../models/user');
+var LocalStrategy   = require('passport-local').Strategy;
+var User            = require('../models/user');
 
-module.exports    = function(passport){
+module.exports = function(passport) {
 
-  passport.serializeUser(function(user, done){
+  passport.serializeUser(function(user, done) {
     done(null, user.id);
   });
 
-  passport.deserializeUser(function(id, callback){
-    User.findById(id, function(err, user){
-      callback(err, user)
-    })
-  })
+  passport.deserializeUser(function(id, callback) {
+    User.findById(id, function(err, user) {
+        callback(err, user);
+    });
+  });
 
   passport.use('local-signup', new LocalStrategy({
-    usernameField: 'name',
-    useremailField: 'email',
+    usernameField: 'email',
     passwordField: 'password',
     passReqToCallback: true
-  }, function(req, name, email, password, callback) {
+  }, function(req, email, password, callback) {
     process.nextTick(function() {
 
       // Find a user with this e-mail
@@ -33,6 +32,7 @@ module.exports    = function(passport){
 
           // Create a new user
           var newUser            = new User();
+          newUser.local.name     = req.body.name;
           newUser.local.email    = email;
           newUser.local.password = newUser.encrypt(password);
 
@@ -46,11 +46,10 @@ module.exports    = function(passport){
   }));
 
   passport.use('local-login', new LocalStrategy({
-    usernameField: 'name',
-    useremailField: 'email',
+    usernameField: 'email',
     passwordField: 'password',
     passReqToCallback: true
-  }, function(req, name, email, password, callback) {
+  }, function(req, email, password, callback) {
 
      // Search for a user with this email
      User.findOne({ 'local.email' :  email }, function(err, user) {
