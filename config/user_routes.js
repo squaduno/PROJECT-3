@@ -1,5 +1,5 @@
 var express = require('express'),
-    router = express.Router()
+    router  = express.Router()
 
 // require controllers
 //for users
@@ -9,6 +9,17 @@ var {index, show, create, update, destroy, getSignup, postSignup, getLogin, post
 router.route('/')
   .get(index)
   .post(create)
+
+  router.route('/signup')
+  .get(getSignup)
+  .post(postSignup)
+
+  router.route('/login')
+  .get(getLogin)
+  .post(postLogin)
+
+  router.route("/logout")
+  .get(getLogout)
 
 router.route('/:id')
   .get(show)
@@ -25,16 +36,5 @@ function authenticateUser(req, res, next) {
   // Otherwise the request is always redirected to the home page
   res.redirect('/');
 }
-
-router.route('/signup')
-  .get(getSignup)
-  .post(postSignup)
-
-router.route('/login')
-  .get(getLogin)
-  .post(postLogin)
-
-router.route("/logout")
-  .get(getLogout)
 
 module.exports = router
