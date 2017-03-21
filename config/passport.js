@@ -1,47 +1,68 @@
-var passport      = require('passport'),
-    LocalStrategy = require('passport-local').Strategy,
-    User          = require('../models/user'),
-    bcrypt        = require('bcrypt');
+var LocalStrategy = require('passport-local').Strategy;
+var User          = require('../models/user');
 
+module.exports    = function(passport){
 
+  passport.serializeUser(function(user, done){
+    done(null, user.id);
+  });
 
-    passport.serializeUser(function(email, done) {
-        done(null, user.email);
+  passport.deserializeUser(function(id, callback){
+    User.findById(id, function(err, user){
+      callback(err, user)
     })
+  })
 
-    passport.deserializeUser(function(email, done) {
-        User.findOne(email, function(err, user){
-            done(err, user)
-        })
-    })
+  passport.use('local-signup', new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true
+  }, function(req, email, password, callback) {
+    process.nextTick(function() {
 
-    passport.use('local-signup', new LocalStrategy({
-        usernameField    : 'name',
-        userEmailField   : 'email',
-        passportField    : 'password',
-        passReqToCallback: true
-    },
-    function(req, name, email, password, res, done) {
-      User.findOne({'email': email}, function(req, res) {
-          if (err) throw (err);
-          if (user) {
-            console.log('email already registered')
-          } else {
+      // Find a user with this e-mail
+      User.findOne({ 'local.email' :  email }, function(err, user) {
+        if (err) return callback(err);
+
+        // If there already is a user with this email
+        if (user) {
+          return callback(null, false, req.flash('signupMessage', 'This email is already used.'));
+        } else {
+        // There is no email registered with this email
+
           // Create a new user
-          var newUser = new User()
-          newUser.local.email = email,
-          newUser.local.password = newUser.encrypt(password),
-          newUser.local.name = name
+          var newUser            = new User();
+          newUser.local.email    = email;
+          newUser.local.password = newUser.encrypt(password);
 
           newUser.save(function(err) {
-            if (err) throw (err)
-            res.json(newUser)
-          })
-          console.log('signup success');
-          // return cb(null, newUser)
-          }
-        })
-      })
-    )
+            console.log('here');
+            if (err) throw err;
+            return callback(null, newUser);
+          });
+        }
+      });
+    });
+  }));
 
-module.exports = passport;
+  passport.use('local-login', new LocalStrategy({
+    usernameField :'email',
+    passwordField : 'password',
+    passReqToCallback : true
+  }, function(req, email, password, callback) {
+
+     // Search for a user with this email
+     User.findOne({ 'local.email' :  email }, function(err, user) {
+       if (err) return callback(err);
+
+        // If no user is found
+       if (!user) return callback(null, false, req.flash('loginMessage', 'No user found.'));
+
+       // Wrong password
+       if (!user.validPassword(password))           return callback(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
+
+       return callback(null, user);
+     });
+   }));
+
+}

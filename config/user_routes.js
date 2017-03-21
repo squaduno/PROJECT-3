@@ -1,14 +1,12 @@
-var express = require('express'),
-    router  = express.Router()
-
-// require controllers
-//for users
-var {index, show, create, update, destroy, getSignup, postSignup, getLogin, postLogin, getLogout} = require('../controllers/users')
+var express         = require('express'),
+    router          = express.Router(),
+    {index, show, create, update, destroy, getSignup, postSignup, getLogin, postLogin, getLogout} = require('../controllers/users'),
+    passport        = require('passport'),
+    bodyParser      = require('body-parser');
 
 //this is for users
-router.route('/')
+  router.route('/')
   .get(index)
-  .post(create)
 
   router.route('/signup')
   .get(getSignup)
@@ -18,14 +16,14 @@ router.route('/')
   .get(getLogin)
   .post(postLogin)
 
-  router.route("/logout")
+  router.route('/logout')
   .get(getLogout)
 
-router.route('/:id')
+  router.route('/:id')
   .get(show)
   .post(update)
 
-router.route('/:id/delete')
+  router.route('/:id/delete')
   .post(destroy)
 
 
