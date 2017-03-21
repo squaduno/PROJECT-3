@@ -11,20 +11,26 @@ var userRatingSchema = new mongoose.Schema({
 var UserRating = mongoose.model("Rating", userRatingSchema)
 
 var apiSchema = new mongoose.Schema({
-  name: String,
+  name: {type: String, required: true, unique: true},
   about: String,
-  url: String,
-  support: Boolean,
-  paid: Boolean,
-  authentication: Boolean,
-  deprecated: Boolean,
+  url: {type: String, required: true, unique: true},
+  support: {type: Boolean, default: false},
+  paid: {type: Boolean, default: false},
+  authentication: {type: Boolean, default: false},
+  deprecated: {type: Boolean, default: false},
   tools: Number,
   category: String,
+<<<<<<< HEAD
   rating: {
     install: Number,
     readability: Number,
     technicality: Number
   },
+=======
+  install: {type: Number, min: 1, max: 5, default: 1},
+  readability: {type: Number, min: 1, max: 5, default: 1},
+  technicality: {type: Number, min: 1, max: 5, default: 1},
+>>>>>>> 8e02d0e92a5d7bcb7c02739599fc3ce2791639a0
   userRating: [userRatingSchema]
 })
 

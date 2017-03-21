@@ -57,9 +57,9 @@ function show(req, res) {
 
 function create(req, res){
   var newUser = new User(req.body)
-  newUser.save(function(err, saveUser) {
+  newUser.save(function(err, newUser) {
     if (err) throw err
-    res.json(saveUser)
+    res.json(newUser)
   })
 }
 

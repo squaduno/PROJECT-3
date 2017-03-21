@@ -1,30 +1,32 @@
-////////AJAX//////////////
-$(document).ready(function(){
-  $('form#newUser').on('submit', sendUserViaAjax)
-})
+$(document).ready(function() {
+  $('#signUpForm').submit(function(event) {
+    event.preventDefault()
+    // alert('good')
+    var user = {
+      username: $('form#signUpForm input#userName').val(),
+      email: $('form#signUpForm input#userEmail').val(),
+      password: $('form#signUpForm input#userPassword').val()
+    }
 
-function sendUserViaAjax(e){
-  e.preventDefault()
-}
+    console.log(user)
+    // $.ajax({
+    //   type    : 'GET',
+    //   url     : 'authentication/signup',
+    //   data    : user,
+    //   dataType: 'json',
+    //   encode  : true
+    // }).done(function(data) {
+    //   console.log(data)
+    // })
 
-var user = {
-  username: $('form#signUpForm input#userName').val(),
-  email: $('form#signUpForm input#userEmail').val(),
-  password: $('form#signUpForm input#userPassword').val()
-}
-
-
-$.post('/users', user)
-.done(function(data){
-  addUser(data)
-})
-
-function userSaved (req, res){
-  if (user.save()){
-  res.redirect('/apis')
-}else{
-  res.redirect('/getSignup')
-}
-}
-
-//////END OF AJAX ////////
+    $.ajax({
+      type    : 'POST',
+      url     : '/users/signup',
+      data    : user,
+      dataType: 'json',
+      encode  : true
+    }).done(function(data) {
+      console.log(data)
+    })
+  })
+});
