@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head')  %>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+  <body>
+    <%- include('../partials/header') %>
+    <div class="container">
+
+          <% users.forEach(function(user) { %>
+
+          <div class="indexCss">
+              <div class="margin"><label>Name:</label> <%= user.local.name %></div>
+              <div class="margin"><label>Experience Level: </label> <%= user.support %></div>
+              <div class="margin"><label>Email: </label> <%= user.local.email %></div>
+
+              <button class="delBtn" id="<%= user._id %>">Delete</button>
+              <button class="delBtn" id="<%= user._id %>"><a href="/users/<%- user._id %>">Show more</a></button>
+
+
+          </div>
+<br>
+          <% }) %>
+    </div>
+
+    <%- include ../partials/footer %>
+  </body>
+</html>
