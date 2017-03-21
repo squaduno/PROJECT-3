@@ -8,12 +8,12 @@
     <div>
           <% apis.forEach(function(api) { %>
           <div class="container">
-              <div><%= api.name %></div>
+              <div>Name: <%= api.name %></div>
               <div><%= api.about %></div>
               <div><%= api.url %></div>
               <div><%= api._id %></div>
               <div><%= api.support %></div>
-              <div><%= api.paid %></div>
+              <div><%= api.free %></div>
               <div><%= api.authentication %></div>
               <div><%= api.deprecated %></div>
               <div><%= api.tools %></div>
@@ -21,7 +21,7 @@
               <div><%= api.install %></div>
               <div><%= api.readability %></div>
               <div><%= api.technicality %></div>
-              <button >Delete</button>
+              <button class="delBtn">Delete</button>
           </div>
           <a href="/apis/<%- api._id %>">Show more</a>
 <br>

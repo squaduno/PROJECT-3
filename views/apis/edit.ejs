@@ -21,19 +21,35 @@
         </div>
         <div class="form-group">
           <label>Support:</label>
-          <input type="checkbox" name='support' value="<%- api.support %>" id="api-support" class="form-control">
+          <% if (api.support) { %>
+          <input type="checkbox" checked name='support' id="api-support" class="form-control">
+          <% } else { %>
+          <input type="checkbox" name='support' id="api-support" class="form-control">
+          <% } %>
         </div>
         <div class="form-group">
           <label>Paid:</label>
-          <input type="checkbox" name="paid" value="<%- api.paid %>" id="api-paid" class="form-control">
+          <% if (api.free) { %>
+          <input type="checkbox" checked name="free" id="api-free" class="form-control">
+          <% } else { %>
+          <input type="checkbox" name="free" id="api-free" class="form-control">
+          <% } %>
         </div>
         <div class="form-group">
           <label>Authenication:</label>
-          <input type="checkbox" name='authentication' value="<%- api.authenication %>" id="api-authentication" class="form-control">
+          <% if (api.authentication) { %>
+          <input type="checkbox" checked name='authentication' id="api-authentication" class="form-control">
+          <% } else { %>
+          <input type="checkbox" name='authentication' id="api-authentication" class="form-control">
+          <% } %>
         </div>
         <div class="form-group">
           <label>Deprecated:</label>
-          <input type="checkbox" name='deprecated' value="<%- api.deprecated %>" id="api-deprecated" class="form-control">
+          <% if (api.deprecated) { %>
+          <input type="checkbox" checked name='deprecated' id="api-deprecated" class="form-control">
+          <% } else { %>
+          <input type="checkbox" name='deprecated' id="api-deprecated" class="form-control">
+          <% } %>
         </div>
         <div class="form-group">
           <label>Tools:</label>
