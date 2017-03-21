@@ -1,0 +1,31 @@
+#apiname{
+  font-size: 50px;
+  text-align: center;
+  font-weight: bold;
+
+  color: red;
+}
+.indexCss {
+  font-size: 20px;
+}
+
+#favoriteButton {
+  float:right;
+  margin-top: 5%;
+}
+
+#navLogoCss {
+  color: red;
+font-family: 'Cedarville Cursive', cursive;
+  font-weight: bold;
+}
+
+#navFavoriteCss {
+  color: red;
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 15px;
+}
+#starButton  {
+  height: 20px;
+  width: 20px;
+}

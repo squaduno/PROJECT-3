@@ -60,6 +60,7 @@ function create(req, res){
   })
 }
 
+
 // UPDATE
 function update(req, res) {
 var id = req.params.id
@@ -87,7 +88,6 @@ function destroy(request, response) {
     response.json({message: 'User successfully deleted'});
   });
 }
-
 
 
 module.exports = {
