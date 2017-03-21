@@ -7,7 +7,7 @@
     <%- include ../partials/header %>
     <div>
           <% apis.forEach(function(api) { %>
-          <div class="">
+          <div class="container">
               <div><%= api.name %></div>
               <div><%= api.about %></div>
               <div><%= api.url %></div>
@@ -18,11 +18,12 @@
               <div><%= api.deprecated %></div>
               <div><%= api.tools %></div>
               <div><%= api.category %></div>
-              <div><%= api.rating %></div>
-              <div><%= api.rating.install %></div>
-              <div><%= api.rating.readability %></div>
-              <div><%= api.rating.technicality %></div>
+              <div><%= api.install %></div>
+              <div><%= api.readability %></div>
+              <div><%= api.technicality %></div>
+              <button >Delete</button>
           </div>
+<br>
           <% }) %>
     </div>
     <%- include ../partials/footer %>

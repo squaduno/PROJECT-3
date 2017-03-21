@@ -3,7 +3,7 @@ var express = require('express'),
 
 // require controllers
 //for api
-var {apiIndex, apiShow, apiNew, apiCreate, apiUpdate, apiDestroy} = require('../controllers/apis')
+var {apiIndex, apiShow, apiNew, apiCreate, apiEdit, apiUpdate, apiDestroy} = require('../controllers/apis')
 
 router.route('/')
   .get(apiIndex)
@@ -12,10 +12,12 @@ router.route('/')
 router.route('/new')
 .get(apiNew)
 
-router.route('/:id')
-  .get(apiShow)
-  .post(apiUpdate)
+router.route('/:id/edit')
+  .get(apiEdit)
 
+router.route('/:id')
+  .post(apiUpdate)
+  .get(apiShow)
 
 router.route('/:id/delete')
   .post(apiDestroy)
