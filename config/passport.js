@@ -14,10 +14,11 @@ module.exports    = function(passport){
   })
 
   passport.use('local-signup', new LocalStrategy({
-    usernameField: 'email',
+    usernameField: 'name',
+    useremailField: 'email',
     passwordField: 'password',
     passReqToCallback: true
-  }, function(req, email, password, callback) {
+  }, function(req, name, email, password, callback) {
     process.nextTick(function() {
 
       // Find a user with this e-mail
@@ -36,7 +37,6 @@ module.exports    = function(passport){
           newUser.local.password = newUser.encrypt(password);
 
           newUser.save(function(err) {
-            console.log('here');
             if (err) throw err;
             return callback(null, newUser);
           });
@@ -46,10 +46,11 @@ module.exports    = function(passport){
   }));
 
   passport.use('local-login', new LocalStrategy({
-    usernameField :'email',
-    passwordField : 'password',
-    passReqToCallback : true
-  }, function(req, email, password, callback) {
+    usernameField: 'name',
+    useremailField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true
+  }, function(req, name, email, password, callback) {
 
      // Search for a user with this email
      User.findOne({ 'local.email' :  email }, function(err, user) {

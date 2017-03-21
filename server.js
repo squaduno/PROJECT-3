@@ -5,6 +5,7 @@ var express         = require('express'),
     mongoose        = require('mongoose'),
     port            = process.env.PORT || 3000,
     app             = express(),
+    LocalStrategy   = require('passport-local'),
     passport        = require('passport'),
     passportConfig  = require('./config/passport'),
     session         = require('express-session'),
@@ -50,5 +51,5 @@ app.use('/apis', apiRoutes)
 
 
 app.listen(port, function(req, res){
-  console.log('The jukebox is running on', port)
+  console.log('The jukebox is playing on', port)
 })
