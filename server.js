@@ -6,6 +6,7 @@ var express = require('express'),
     port = process.env.PORT || 3000,
     app = express(),
     passport = require('passport'),
+    passportConfig = require('./config/passport'),
     session = require('express-session'),
     flash   = require('connect-flash'),
     apiRoutes  = require('./config/api_routes'),
@@ -17,7 +18,7 @@ var dbUri = process.env.MONGODB_URI || 'mongodb://localhost/jukebox'
 mongoose.connect(dbUri)
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'))
+// app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
 // middleware
@@ -31,7 +32,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-require('./config/passport')(passport);
 // root route
 app.get('/', function(req, res){
   res.send('Hello Jukebox')
