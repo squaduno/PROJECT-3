@@ -1,7 +1,7 @@
 var express         = require('express'),
     router          = express.Router(),
     bodyParser      = require('body-parser'),
-    {index, show, create, update, destroy, getSignup, postSignup, getLogin, postLogin, getLogout} = require('../controllers/users'),
+    {index, show, create, edit, update, destroy, getSignup, postSignup, getLogin, postLogin, getLogout} = require('../controllers/users'),
     methodOverride  = require('method-override'),
     passport        = require('passport');
 
@@ -17,6 +17,7 @@ var express         = require('express'),
 //this is for users
   router.route('/')
   .get(index)
+  .post(create)
 
   router.route('/signup')
   .get(getSignup)
@@ -29,12 +30,13 @@ var express         = require('express'),
   router.route('/logout')
   .get(getLogout)
 
+  router.route('/:id/edit')
+    .get(edit)
+
   router.route('/:id')
   .get(show)
   .post(update)
-
-  router.route('/:id/delete')
-  .post(destroy)
+  .delete(destroy)
 
 
 

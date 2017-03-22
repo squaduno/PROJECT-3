@@ -58,17 +58,15 @@
         <div class="form-group">
           <label>Category:</label>
           <select name="category" value="<%- api.category %>" id="api-category" class="form-control">
-              <option value="Music">Music</option>
-              <option value="Recommendations">Recommendations</option>
-              <option value="Transportation">Transportation</option>
-              <option value="Fitness">Fitness</option>
-              <option value="Social">Social</option>
-              <option value="Photos">Photos</option>
-              <option value="Shopping">Shopping</option>
-              <option value="Real Estate">Real Estate</option>
-              <option value="Mapping">Mapping</option>
-              <option value="Weather">Weather</option>
-              <option value="Video">Video</option>
+            // populates with pre-selected category
+            <%
+            var options = [ "Music", "Recommendations", "Transportation", "Fitness", "Social", "Photos", "Shopping", "Real Estate", "Mapping", "Weather", "Video" ];
+            for ( var i = 0; i < options.length; i++ )
+            {
+              var selected = ( api.category == options[i] ) ? "selected" : "";
+              %><option value="<%=options[i] %>" <%=selected %>><%= options[i] %></option><%
+            }
+            %>
           </select>
         </div>
         <div class="rated-categories">
