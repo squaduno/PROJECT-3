@@ -33,6 +33,10 @@ var express         = require('express'),
   .get(show)
   .post(update)
 
+  router.route('/:id/edit')
+    .get(show)
+    .post(update)
+
   router.route('/:id/delete')
   .post(destroy)
 
