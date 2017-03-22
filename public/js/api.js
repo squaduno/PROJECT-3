@@ -20,7 +20,7 @@ $(document).ready(function(){
     console.log(id)
     $.ajax({
       type: "POST",
-      url: "/apis/favorite",
+      url: "/favorite",
       data: {id: id}
     }).then(
       function(data){
