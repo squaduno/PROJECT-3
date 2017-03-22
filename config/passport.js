@@ -134,7 +134,6 @@ passport.use(new GitHubDevStrategy({
           if (err)
             throw err;
           return callback(null, newUser);
-          console.log(profile.accessToken)
         })
       }
     });
