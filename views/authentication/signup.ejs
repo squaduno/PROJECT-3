@@ -7,14 +7,13 @@
 
 <body>
   <%- include('../partials/header') %>
-        <div class="jumbotron">Signup</div>
 
         <% if (message.length > 0) { %>
             <div class="alert alert-danger">
                 <%= message %>
             </div>
             <% } %>
-
+            <div class="container">
                 <form method="post" action="/users/signup">
                     <div class="form-group">
                         <label for="name">Name</label>
@@ -38,7 +37,10 @@
                 <h2>Login/Register with GitHub:</h2>
 
                 <a href="/auth/github" class="btn btn-primary"><span class=""></span> GitHub</a>
+              </div>
+              
                 <% include ../partials/footer.ejs %>
+
 </body>
 
 </html>
