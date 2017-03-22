@@ -23,7 +23,7 @@ function getLogin(request, response) {
 
 function postLogin(request, response) {
   var loginProperty = passport.authenticate('local-login', {
-    successRedirect: '/',
+    successRedirect: '/apis',
     failureRedirect: '/login',
     failureFlash: true
   })
@@ -40,18 +40,20 @@ function getLogout(request, response) {
 function index(req, res) {
   User.find({}, function(err, users){
     if (err) throw err
-    res.json(users)
+    res.render('users/index', {users: users})
   })
 }
 
+//SHOW
 function show(req, res) {
   var id = req.params.id
   User.findById({_id: id}, function(err, user) {
     if (err) throw err
-    res.json(user)
+    res.render('users/show', {user: user})
   })
 }
 
+// CREATE
 function create(req, res){
   var newUser = new User(req.body)
   newUser.save(function(err, newUser) {
@@ -60,6 +62,14 @@ function create(req, res){
   })
 }
 
+// EDIT
+function edit(req, res){
+  var id = req.params.id
+  User.findById({_id: id}, function(err, user) {
+    if (err) throw err
+    res.render('users/edit', {user: user})
+  })
+}
 
 // UPDATE
 function update(req, res) {
@@ -68,12 +78,13 @@ User.findById({_id: id}, function(err, user) {
   if (err) throw err
   // change user username and expLevel
   if(req.body.name) user.name = req.body.name
-  if(req.body.expLevel) user.expLevel = req.body.expLevel
+  if(req.body.email) user.email = req.body.email
+  user.expLevel = req.body.expLevel
   //save the user
   user.save(function(err) {
     if (err) res.json({message: 'Something went wrong, could not save user'})
-
-    res.json('User successfully updated!')
+    console.log("User successfully updated");
+    res.redirect('/users/' +id)
    })
  })
 }
@@ -94,6 +105,7 @@ module.exports = {
   index: index,
   show: show,
   create: create,
+  edit: edit,
   update: update,
   destroy: destroy,
   getLogin: getLogin,
