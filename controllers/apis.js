@@ -15,6 +15,7 @@ function apiShow(req, res) {
   })
 }
 
+
 function apiNew(req, res){
   res.render('apis/new')
 }
@@ -75,6 +76,7 @@ function apiDestroy(req, res) {
     res.json({message: "Api deleted"})
     })
   }
+
 
 
 module.exports = {

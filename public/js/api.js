@@ -13,6 +13,19 @@ $(document).ready(function(){
       apiDiv.remove()
     })
   })
+  $('#favoriteButton').on('click', function(){
+    var api = $(this)
+    var apiDiv = api.parent()
+    var id = api.attr('id')
+    $.ajax({
+      method: "POST",
+      url: `/apis/favorite`
+    }).done(function(){
+      apiDiv.append()
+    })
+  })
+
+
 
 
 
