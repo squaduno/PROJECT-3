@@ -19,21 +19,6 @@ var express         = require('express'),
 var dbUri = process.env.MONGODB_URI || 'mongodb://localhost/jukebox'
 mongoose.connect(dbUri)
 
-// GITHUB AUTH
-
-app.get('/auth/github',
-  passport.authenticate('github'));
-
-app.get('/auth/github/callback',
-  passport.authenticate('github', { failureRedirect: '/login' }),
-  function(req, res) {
-
-    // Successful authentication, redirect home.
-    res.redirect('/');
-  });
-
-//END OF GITHUB
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
@@ -56,9 +41,25 @@ app.use(function (req, res, next){
   global.user = req.user
   next()
 })
-// root route
-app.use('/', apiRoutes)
 
+// GITHUB AUTH
+
+app.get('/auth/github',
+passport.authenticate('github'));
+
+app.get('/auth/github/callback',
+passport.authenticate('github', { failureRedirect: '/login' }),
+function(req, res) {
+  console.log("hola")
+  // Successful authentication, redirect home.
+  res.redirect('/');
+});
+
+//END OF GITHUB
+
+// root route
+
+app.use('/', apiRoutes)
 
 app.use('/users', userRoutes)
 
