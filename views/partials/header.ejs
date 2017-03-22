@@ -17,8 +17,11 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="/apis/favorite"><img id="starButton" src="http://images.clipartpanda.com/clipart-star-RTA9RqzTL.png" height="20px" width="20px"> <span class="sr-only">(current)</span></a></li>
-
+          <% if (user) {%>
+          <li ><a href="/users/<%= user._id %>"><img id="starButton" src="http://img.freepik.com/free-vector/vinyl-disc_1021-30.jpg?size=338&ext=jpg" height="30px" width="30px"> <span class="sr-only">(current)</span></a></li>
+          <% } else { %>
+          <li ><a href="/users/login"><img id="starButton" src="https://www.biddingowl.com/images/signInGraphic.jpg" height="30px" width="30px"> <span class="sr-only">(current)</span></a></li>
+          <% } %>
 
 
         </ul>
@@ -32,11 +35,12 @@
 
           <li class="dropdown">
             <% if (user) {%>
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= user.local.email  %><span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= user.local.email || user.gitHub.email %><span class="caret"></span></a>
 
             <ul class="dropdown-menu">
 
 
+              <li><a href="/users/<%= user._id %>">Profile</a></li>
                 <li><a href="/users/<%= user._id %>/edit">Account Settings</a></li>
                 <li><a href="/users/logout">Log Out</a></li>
                 <% } else { %>

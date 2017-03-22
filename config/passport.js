@@ -1,7 +1,6 @@
 var LocalStrategy     = require('passport-local').Strategy,
     User              = require('../models/user'),
-    GitHubStrategy    = require('passport-github').Strategy,
-    GitHubDevStrategy = require('passport-github').Strategy;
+    GitHubStrategy    = require('passport-github').Strategy;
 
 
 module.exports = function(passport) {
@@ -62,7 +61,8 @@ module.exports = function(passport) {
        if (!user) return callback(null, false, req.flash('loginMessage', 'No user found.'));
 
        // Wrong password
-       if (!user.validPassword(password))           return callback(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
+       if (!user.validPassword(password))
+       return callback(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
 
        return callback(null, user);
      });
@@ -70,30 +70,35 @@ module.exports = function(passport) {
 
 //////////////////////////GITHUB//////////////////////////////////
 passport.use(new GitHubStrategy({
-    authorizationURL: 'https://github.com/login/oauth/authorize',
+    // authorizationURL: 'https://github.com/login/oauth/authorize',
     // tokenURL: 'https://github.com/login/oauth/token',
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    // callbackURL: process.env.GITHUB_CALL_BACK_URL,
+    callbackURL: process.env.GITHUB_CALL_BACK_URL,
 
   },
 
   // CREATES A NEW USER WITH INFO FROM GITHUB
   function(accessToken, refreshToken, profile, callback) {
-    User.findOrCreate({
-      githubId: profile.id
-    }, function(err, user) {
+    User.findOne({
+      github: {id: profile.id
+    }}, function(err, user) {
       if (err)
         return callback(err);
       if (user) {
         return callback(null, user);
       } else {
         var newUser = new User();
+        console.log('GitHub profile:' + JSON.stringify(profile._json))
+        newUser.github = {
+          id: profile.id,
+          token: accessToken,
+          name: profile._json.name,
+          // email: profile._json.email
+        }
+newUser.local.email = 'GitHub Guest ' + profile._json.name
+console.log(newUser)
 
-        newUser.gitHub.id = profile.id;
-        newUser.gitHub.token = profile.accessToken;
-        newUser.gitHub.name = profile.profile.name;
-        newUser.gitHub.email = profile.email[0].value;
         newUser.save(function(err) {
           if (err)
             throw err;
@@ -103,45 +108,5 @@ passport.use(new GitHubStrategy({
     });
   }
 ));
-
-//////////////////////////GITHUBDEV//////////////////////////////////
-passport.use(new GitHubDevStrategy({
-    authorizationURL: 'https://github.com/login/oauth/authorize',
-    // tokenURL: 'https://github.com/login/oauth/token',
-    clientID: process.env.GITHUB_DEV_CLIENT_ID,
-    clientSecret: process.env.GITHUB_DEV_CLIENT_SECRET,
-    // callbackURL: process.env.GITHUB_CALL_BACK_URL,
-
-  },
-
-  // CREATES A NEW USER WITH INFO FROM GITHUB
-  function(accessToken, refreshToken, profile, callback) {
-    User.findOrCreate({
-      githubId: profile.id
-    }, function(err, user) {
-      if (err)
-        return callback(err);
-      if (user) {
-        return callback(null, user);
-      } else {
-        var newUser = new User();
-
-        newUser.gitHub.id = profile.id;
-        newUser.gitHub.token = profile.accessToken;
-        newUser.gitHub.name = profile.profile.name;
-        newUser.gitHub.email = profile.email[0].value;
-        newUser.save(function(err) {
-          if (err)
-            throw err;
-          return callback(null, newUser);
-          console.log(profile.accessToken)
-        })
-      }
-    });
-  }
-));
-
-
-//////////////////////END_OF_GITHUB//////////////////////////////
 
 }
