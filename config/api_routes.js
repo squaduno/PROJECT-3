@@ -1,6 +1,11 @@
 var express = require('express'),
-    router = express.Router(),
-    {apiIndex, apiShow, apiNew, apiCreate, apiEdit, apiUpdate, apiDestroy} = require('../controllers/apis');
+
+    router = express.Router()
+
+// require controllers
+//for api
+var {apiIndex, apiShow, apiNew, apiCreate, apiEdit, apiUpdate, apiDestroy, apiFavorite} = require('../controllers/apis')
+
 
 router.route('/')
   .get(apiIndex)
@@ -8,6 +13,9 @@ router.route('/')
 
 router.route('/new')
   .get(apiNew)
+
+  router.route('/favorite')
+    .post(apiFavorite)
 
 
 
@@ -18,5 +26,6 @@ router.route('/:id')
   .post(apiUpdate)
   .get(apiShow)
   .delete(apiDestroy)
+
 
 module.exports = router
