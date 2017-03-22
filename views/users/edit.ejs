@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include ../partials/head %>
+    </head>
+    <body class="container">
+      <%- include ../partials/header %>
+      <h1>Edit Profile</h1>
+      <form action="/users/<%= user._id %>" method="POST">
+        <div class="form-group">
+          <label>Name:</label>
+          <input type="text" name='name' value="<%- user.local.name %>" placeholder="Name" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Email:</label>
+          <input type="text" name='email' value="<%- user.local.email %>" placeholder="Email" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Experience Level:</label>
+          <select name="expLevel" value="<%- user.expLevel %>" class="form-control">
+            <%
+            var options = [ "Beginner", "Intermediate", "Advanced" ];
+            for ( var i = 0; i < options.length; i++ )
+            {
+              var selected = ( user.expLevel == options[i] ) ? "selected" : "";
+              %><option value="<%=options[i] %>" <%=selected %>><%= options[i] %></option><%
+            }
+            %>
+          </select>
+        </div>
+        <div class="form-group">
+          <input type="submit" value='Update User'>
+        </div>
+        <a href="/users/<%- user._id%>">Back</a>
+
+      </form>
+
+      <%- include ../partials/footer.ejs %>
+    </body>
+</html>
