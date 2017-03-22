@@ -17,6 +17,7 @@ var express         = require('express'),
 //this is for users
   router.route('/')
   .get(index)
+  .post(create)
 
   router.route('/signup')
   .get(getSignup)

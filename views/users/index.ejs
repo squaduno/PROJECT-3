@@ -12,11 +12,12 @@
 
           <div class="indexCss">
               <div class="margin"><label>Name:</label> <%= user.local.name %></div>
-              <div class="margin"><label>Experience Level: </label> <%= user.support %></div>
+              <div class="margin"><label>Id:</label> <%= user._id %></div>
+              <div class="margin"><label>Experience Level: </label> <%= user.expLevel %></div>
               <div class="margin"><label>Email: </label> <%= user.local.email %></div>
 
-              <button class="delBtn" id="<%= user._id %>">Delete</button>
-              <button class="delBtn" id="<%= user._id %>"><a href="/users/<%- user._id %>">Show more</a></button>
+              <button class="userDelBtn" id="<%= user._id %>">Delete</button>
+              <button id="<%= user._id %>"><a href="/users/<%- user._id %>">Show more</a></button>
 
 
           </div>
