@@ -11,7 +11,9 @@ var express         = require('express'),
     session         = require('express-session'),
     flash           = require('connect-flash'),
     apiRoutes       = require('./config/api_routes'),
-    userRoutes      = require('./config/user_routes')
+    userRoutes      = require('./config/user_routes'),
+    google          = require('googleapis'),
+    OAuth2          = google.auth.OAuth2,
                       require('dotenv').config()
 
 
@@ -31,6 +33,18 @@ app.get('/auth/github/callback',
   });
 
 //END OF GITHUB
+
+// GOOGLE AUTH
+
+var
+
+
+
+
+
+
+//END OF GOOGLE
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
