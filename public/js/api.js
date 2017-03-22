@@ -13,14 +13,14 @@ $(document).ready(function(){
       apiDiv.remove()
     })
   })
-  $('#favoriteButton').on('click', function(){
+  $('.favoriteButton').one('click', function(){
     var api = $(this)
 
-    var id = api.attr('class')
+    var id = api.data('target')
     console.log(id)
     $.ajax({
       type: "POST",
-      url: "/apis/favorite",
+      url: "/favorite",
       data: {id: id}
     }).then(
       function(data){

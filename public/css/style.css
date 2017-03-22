@@ -9,7 +9,7 @@
   font-size: 20px;
 }
 
-#favoriteButton {
+.favoriteButton {
   float:right;
   margin-top: 5%;
 }
@@ -26,6 +26,10 @@ font-family: 'Cedarville Cursive', cursive;
   font-size: 15px;
 }
 #starButton  {
-  height: 20px;
-  width: 20px;
+  height: 25px;
+  width: 25px;
+}
+#starButton2  {
+  height: 40px;
+  width: 40px;
 }
