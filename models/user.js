@@ -1,13 +1,17 @@
-var mongoose  = require('mongoose'),
-    Api       = require('./api'),
-    bcrypt    = require('bcrypt-nodejs')
+var mongoose = require('mongoose'),
+  Api = require('./api'),
+  bcrypt = require('bcrypt-nodejs')
 
 var User = mongoose.Schema({
-    expLevel: String,
-    admin: Boolean,
-    local: {
+  expLevel: String,
+  admin: Boolean,
+  local: {
     name: String,
-    email: {type: String, required: true, unique: true},
+    email: {
+      type: String,
+      required: true,
+      unique: true
+    },
     password: String,
   },
   github: {
@@ -16,14 +20,17 @@ var User = mongoose.Schema({
     email: String,
     name: String
   },
-  favorites: [{type: mongoose.Schema.ObjectId, ref: 'Api'}]
+  favorites: [{
+    type: mongoose.Schema.ObjectId,
+    ref: 'Api'
+  }]
 })
 
 User.methods.encrypt = function(password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 
-User.methods.validPassword = function(password){
+User.methods.validPassword = function(password) {
   return bcrypt.compareSync(password, this.local.password);
 }
 
