@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include ../partials/head  %>
+  </head>
+  <body>
+    <%- include ../partials/header %>
+    <div class="container">
+          <div class="">
+              <h3><%= user.local.name %></div></h3>
+              <br>
+              <div><label>Experience Level: </label> <%= user.expLevel %></div>
+              <br>
+              <div><label>Favorites: </label> <%= user.favorites %></div>
+
+          </div>
+          <a href="/users/<%- user._id%>/edit">Edit</a>
+          <a href="/users">Back</a>
+    </div>
+    <%- include ../partials/footer %>
+  </body>
+</html>
