@@ -11,9 +11,7 @@ var express         = require('express'),
     session         = require('express-session'),
     flash           = require('connect-flash'),
     apiRoutes       = require('./config/api_routes'),
-    userRoutes      = require('./config/user_routes'),
-    google          = require('googleapis'),
-    OAuth2          = google.auth.OAuth2,
+    userRoutes      = require('./config/user_routes');
                       require('dotenv').config()
 
 
@@ -22,29 +20,19 @@ var dbUri = process.env.MONGODB_URI || 'mongodb://localhost/jukebox'
 mongoose.connect(dbUri)
 
 // GITHUB AUTH
+
 app.get('/auth/github',
   passport.authenticate('github'));
 
 app.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/login' }),
   function(req, res) {
+
     // Successful authentication, redirect home.
     res.redirect('/');
   });
 
 //END OF GITHUB
-
-// GOOGLE AUTH
-
-var
-
-
-
-
-
-
-//END OF GOOGLE
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -70,7 +58,7 @@ app.use(function (req, res, next){
 })
 // root route
 app.get('/', function(req, res){
-  res.send('Hello Jukebox')
+  res.render('apis/index.ejs');
 })
 
 app.use('/users', userRoutes)
