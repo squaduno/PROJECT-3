@@ -8,7 +8,7 @@ $(document).ready(function(){
     var id = api.attr('id')
     $.ajax({
       method: "DELETE",
-      url: `/apis/${id}`
+      url: `/${id}`
     }).done(function(){
       apiDiv.remove()
     })

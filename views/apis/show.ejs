@@ -22,10 +22,8 @@
               <div><label>Readability Rating: </label> <%= api.readability %></div>
               <div><label>Technicality Rating: </label> <%= api.technicality %></div>
           </div>
-          <% if(user.admin) { %>
-          <a href="/apis/<%- api._id%>/edit">Edit</a>
-          <% } %>
-          <a href="/apis">Back</a>
+          <a href="/<%- api._id%>/edit">Edit</a>
+          <a href="/">Back</a>
     </div>
     <%- include ../partials/footer %>
   </body>

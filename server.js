@@ -57,12 +57,10 @@ app.use(function (req, res, next){
   next()
 })
 // root route
-app.get('/', function(req, res){
-  res.render('apis/index.ejs');
-})
+app.use('/', apiRoutes)
+
 
 app.use('/users', userRoutes)
-app.use('/apis', apiRoutes)
 
 
 
