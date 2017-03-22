@@ -6,7 +6,7 @@
     <body class="container">
       <%- include ../partials/header %>
       <h1>Add a new API</h1>
-      <form action="/apis/<%= api._id %>" method="POST">
+      <form action="/<%= api._id %>" method="POST">
         <div class="form-group">
           <label>Name:</label>
           <input type="text" name='name' value="<%- api.name %>" placeholder="Name" class="form-control">
@@ -88,7 +88,7 @@
         <div class="form-group">
           <input type="submit" value='Update API'>
         </div>
-        <a href="/apis/<%- api._id%>">Back</a>
+        <a href="/<%- api._id%>">Back</a>
 
       </form>
 
