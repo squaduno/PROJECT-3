@@ -1,6 +1,7 @@
-var LocalStrategy   = require('passport-local').Strategy,
-    User            = require('../models/user'),
-    GitHubStrategy  = require('passport-github').Strategy;
+var LocalStrategy     = require('passport-local').Strategy,
+    User              = require('../models/user'),
+    GitHubStrategy    = require('passport-github').Strategy,
+    GitHubDevStrategy = require('passport-github').Strategy;
 
 
 module.exports = function(passport) {
@@ -93,8 +94,6 @@ passport.use(new GitHubStrategy({
         newUser.gitHub.token = profile.accessToken;
         newUser.gitHub.name = profile.profile.name;
         newUser.gitHub.email = profile.email[0].value;
-        console.log(profile)
-
         newUser.save(function(err) {
           if (err)
             throw err;
@@ -105,5 +104,43 @@ passport.use(new GitHubStrategy({
   }
 ));
 
+//////////////////////////GITHUBDEV//////////////////////////////////
+passport.use(new GitHubDevStrategy({
+    authorizationURL: 'https://github.com/login/oauth/authorize',
+    // tokenURL: 'https://github.com/login/oauth/token',
+    clientID: process.env.GITHUB_DEV_CLIENT_ID,
+    clientSecret: process.env.GITHUB_DEV_CLIENT_SECRET,
+    // callbackURL: process.env.GITHUB_CALL_BACK_URL,
+
+  },
+
+  // CREATES A NEW USER WITH INFO FROM GITHUB
+  function(accessToken, refreshToken, profile, callback) {
+    User.findOrCreate({
+      githubId: profile.id
+    }, function(err, user) {
+      if (err)
+        return callback(err);
+      if (user) {
+        return callback(null, user);
+      } else {
+        var newUser = new User();
+
+        newUser.gitHub.id = profile.id;
+        newUser.gitHub.token = profile.accessToken;
+        newUser.gitHub.name = profile.profile.name;
+        newUser.gitHub.email = profile.email[0].value;
+        newUser.save(function(err) {
+          if (err)
+            throw err;
+          return callback(null, newUser);
+        })
+      }
+    });
+  }
+));
+
+
 //////////////////////END_OF_GITHUB//////////////////////////////
+
 }
