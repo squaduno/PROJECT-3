@@ -8,13 +8,13 @@
     <%- include('../partials/header') %>
     <div class="container">
 
+
           <% apis.forEach(function(api) { %>
             <% if (user) {%>
             <button data-target="<%= api._id %>" class="favoriteButton" type="button"><img id="starButton2" src="http://img.freepik.com/free-vector/vinyl-disc_1021-30.jpg?size=338&ext=jpg"></button>
-          <div class="indexCss">
+
             <% } %>
-
-
+              <div class="indexCss">
               <div id=apiname> <%= api.name %></div>
               <div class="margin"><label>About:</label> <%= api.about %></div>
               <div class="margin"><label>URL: </label> <a href="<%= api.url %>">Click to access API documentation</a></div>
@@ -33,6 +33,7 @@
           </div>
 <br>
           <% }) %>
+
     </div>
     <a href="/new">Create new Api</a>
     <%- include ../partials/footer %>
