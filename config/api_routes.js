@@ -12,6 +12,9 @@ router.route('/')
 router.route('/new')
   .get(apiNew)
 
+  router.route('/favorite')
+    .post(apiFavorite)
+
 
 
 router.route('/:id/edit')

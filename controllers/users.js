@@ -1,5 +1,6 @@
-var User      = require('../models/user')
-    passport  = require('passport')
+var User      = require('../models/user'),
+    passport  = require('passport'),
+    Api       = require('../models/api')
 
 
 
@@ -47,7 +48,9 @@ function index(req, res) {
 //SHOW
 function show(req, res) {
   var id = req.params.id
-  User.findById({_id: id}, function(err, user) {
+  User.findById({_id: id})
+  .populate('favorites')
+  .exec( function(err, user) {
     if (err) throw err
     res.render('users/show', {user: user})
   })

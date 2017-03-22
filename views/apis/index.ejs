@@ -10,8 +10,10 @@
 
           <% apis.forEach(function(api) { %>
 
-            <button id="favoriteButton" type="button" onclick="alert('Favorited API!')"><img id="starButton" src="http://images.clipartpanda.com/clipart-star-RTA9RqzTL.png"></button>
+            <button class="<%= api._id %>"id="favoriteButton" type="button"><img id="starButton" src="http://images.clipartpanda.com/clipart-star-RTA9RqzTL.png"></button>
           <div class="indexCss">
+
+
 
               <div id=apiname> <%= api.name %></div>
               <div class="margin"><label>About:</label> <%= api.about %></div>

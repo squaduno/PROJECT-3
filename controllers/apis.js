@@ -1,4 +1,5 @@
-var Api = require('../models/api')
+var Api = require('../models/api'),
+    User = require('../models/user')
 
 function apiIndex(req, res) {
   Api.find({}, function(err, apis) {
@@ -77,6 +78,21 @@ function apiDestroy(req, res) {
     })
   }
 
+function apiFavorite(req, res)  {
+    var id = req.body.id
+    console.log(id)
+    Api.findById(id, function(err, api){
+      if (err) throw err
+      User.findById(req.user._id, function(err, user){
+        if (err) throw err
+        user.favorites.push(api)
+        user.save(function (err, updatedUser){
+          if (err) throw err
+          res.json(updatedUser)
+        })
+      })
+    })
+}
 
 
 module.exports = {
@@ -86,5 +102,6 @@ module.exports = {
   apiCreate: apiCreate,
   apiEdit: apiEdit,
   apiUpdate: apiUpdate,
-  apiDestroy: apiDestroy
+  apiDestroy: apiDestroy,
+  apiFavorite: apiFavorite
 }

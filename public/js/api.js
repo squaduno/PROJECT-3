@@ -15,14 +15,19 @@ $(document).ready(function(){
   })
   $('#favoriteButton').on('click', function(){
     var api = $(this)
-    var apiDiv = api.parent()
-    var id = api.attr('id')
+
+    var id = api.attr('class')
+    console.log(id)
     $.ajax({
-      method: "POST",
-      url: `/apis/favorite`
-    }).done(function(){
-      apiDiv.append()
-    })
+      type: "POST",
+      url: "/apis/favorite",
+      data: {id: id}
+    }).then(
+      function(data){
+        console.log(data)
+      }
+    )
+
   })
 
 
