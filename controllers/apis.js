@@ -34,7 +34,6 @@ function apiEdit(req, res){
   var id = req.params.id
   Api.findById({_id: id}, function(err, api) {
     if (err) throw err
-    console.log(api.support);
     res.render('apis/edit', {api: api})
   })
 }
@@ -48,6 +47,7 @@ Api.findById({_id: id}, function(err, api) {
   if(req.body.name) api.name = req.body.name
   if(req.body.about) api.about = req.body.about
   if(req.body.url) api.url = req.body.url
+  // hard set for boolean values
   api.support = req.body.support
   api.free = req.body.free
   api.authentication = req.body.authentication
