@@ -1,9 +1,11 @@
 var express = require('express'),
+
     router = express.Router()
 
 // require controllers
 //for api
 var {apiIndex, apiShow, apiNew, apiCreate, apiEdit, apiUpdate, apiDestroy, apiFavorite} = require('../controllers/apis')
+
 
 router.route('/')
   .get(apiIndex)

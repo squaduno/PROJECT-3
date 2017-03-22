@@ -27,7 +27,7 @@ var newApi = new Api(req.body)
 console.log(req.body)
 newApi.save(function(err, saveApi){
   if (err) throw err
-  res.redirect('/apis')
+  res.redirect('/')
  })
 }
 
@@ -64,7 +64,7 @@ Api.findById({_id: id}, function(err, api) {
     if (err) res.json({message: 'Something went wrong, could not save api'})
 
     console.log("Update successful");
-    res.redirect('/apis/' + id)
+    res.redirect('/' + id)
    })
  })
 }

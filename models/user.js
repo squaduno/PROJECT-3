@@ -4,6 +4,7 @@ var mongoose  = require('mongoose'),
 
 var User = mongoose.Schema({
     expLevel: String,
+    admin: Boolean,
     local: {
     name: String,
     email: {type: String, required: true, unique: true},
