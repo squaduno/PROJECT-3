@@ -26,15 +26,18 @@
               <div class="margin"><label>Install Rating: </label> <%= api.rating.install %></div>
               <div class="margin"><label>Readability Rating: </label> <%= api.rating.readability %></div>
               <div class="margin"><label>Technicality Rating: </label> <%= api.rating.technicality %></div>
+              <% if(user.admin) { %>
               <button class="delBtn" id="<%= api._id %>">Delete</button>
+              <% } %>
               <a href="/apis/<%- api._id %>">Show more</a>
 
           </div>
 <br>
           <% }) %>
     </div>
-
+    <% if(user.admin) { %>
     <a href="/apis/new">Create new Api</a>
+    <% } %>
     <%- include ../partials/footer %>
   </body>
 </html>
