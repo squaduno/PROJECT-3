@@ -10,7 +10,7 @@ function apiIndex(req, res) {
 
 function apiShow(req, res) {
   var id = req.params.id
-  Api.findById({_id: id}, function(err, api) {
+  Api.findById(id, function(err, api) {
     if (err) throw err
     res.render('apis/show', {api: api})
   })
@@ -24,6 +24,7 @@ function apiNew(req, res){
 
 function apiCreate(req, res) {
 var newApi = new Api(req.body)
+
 console.log(req.body)
 newApi.save(function(err, saveApi){
   if (err) throw err

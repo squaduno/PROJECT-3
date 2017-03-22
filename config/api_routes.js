@@ -1,6 +1,6 @@
 var express = require('express'),
 
-    router = express.Router()
+router = express.Router()
 
 // require controllers
 //for api
@@ -24,7 +24,7 @@ router.route('/:id/edit')
 
 router.route('/:id')
   .post(apiUpdate)
-  .get(apiShow)
+  // .get(apiShow)
   .delete(apiDestroy)
 
 

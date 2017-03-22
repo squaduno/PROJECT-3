@@ -18,7 +18,7 @@ var apiSchema = new mongoose.Schema({
   free: {type: Boolean, default: false},
   authentication: {type: Boolean, default: false},
   deprecated: {type: Boolean, default: false},
-  tools: Number,
+  tools: {type: Number, min: 0, default: 0},
   category: String,
   install: {type: Number, min: 1, max: 5, default: 1},
   readability: {type: Number, min: 1, max: 5, default: 1},
