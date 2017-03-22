@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head')  %>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+  <body>
+    <%- include('../partials/header') %>
+    <div class="container">
+
+          <% apis.forEach(function(api) { %>
+
+            <button id="favoriteButton" type="button" onclick="alert('Favorited API!')"><img id="starButton" src="http://images.clipartpanda.com/clipart-star-RTA9RqzTL.png"></button>
+          <div class="indexCss">
+
+              <div id=apiname><%= api.name %></div>
+              <div class="margin"><label>About:</label><%= api.about %></div>
+              <div class="margin"><label>Url: </label><%= api.url %></div>
+              <div class="margin"><label>API Id: </label><%= api._id %></div>
+              <div class="margin"><label>Support: </label><%= api.support %></div>
+              <div class="margin"><label>Free: </label><%= api.free %></div>
+              <div class="margin"><label>Authentication: </label><%= api.authentication %></div>
+              <div class="margin"><label>Deprecated: </label><%= api.deprecated %></div>
+              <div class="margin"><label>Tools: </label><%= api.tools %></div>
+              <div class="margin"><label>Category: </label><%= api.category %></div>
+              <div class="margin"><label>Rating: </label><%= api.rating %></div>
+              <div class="margin"><label>Install Rating: </label><%= api.rating.install %></div>
+              <div class="margin"><label>Readability Rating: </label><%= api.rating.readability %></div>
+              <div class="margin"><label>Technicality Rating: </label><%= api.rating.technicality %></div>
+              <button class="delBtn" id="<%= api._id %>">Delete</button>
+              <a href="/apis/<%- api._id %>">Show more</a>
+
+          </div>
+<br>
+          <% }) %>
+    </div>
+
+    <a href="/apis/new">Create new Api</a>
+    <%- include ../partials/footer %>
+  </body>
+</html>
