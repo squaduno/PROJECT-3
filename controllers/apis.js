@@ -115,7 +115,7 @@ function apiFavorite(req, res)  {
 
 function search(req, res) {
   var searchTerm = req.query.name
-  Api.find({}, function(err, api){
+  Api.find({name: searchTerm}, function(err, api) {
     if (err) throw err
     api.find({name: searchTerm})
     .then(function (data) {
@@ -129,9 +129,9 @@ function search(req, res) {
 }
 
 function postSearch(req, res) {
-  var id = req.params.id
-  console.log(req.params.id)
-  res.redirect('/' + id);
+  var api = req.body.searchTerm
+  console.log(req.body.searchTerm)
+  res.redirect('/search?name=' + api);
 }
 
 
