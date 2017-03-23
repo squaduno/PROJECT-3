@@ -8,12 +8,13 @@
 <body>
   <%- include('../partials/header') %>
 
+  <div class="container">
+
         <% if (message.length > 0) { %>
             <div class="alert alert-danger">
                 <%= message %>
             </div>
             <% } %>
-            <div class="container">
                 <form method="post" action="/users/signup">
                     <div class="form-group">
                         <label for="name">Name</label>
@@ -37,10 +38,10 @@
                 <h2>GitHub Authorization</h2>
 
                 <a href="/auth/github" class="btn btn-primary"><span class=""></span>GitHub Login</a>
-              </div>
 
                 <% include ../partials/footer.ejs %>
 
+    </div>
 </body>
 
 </html>

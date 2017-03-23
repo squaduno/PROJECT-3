@@ -3,8 +3,10 @@
     <head>
         <%- include ../partials/head %>
     </head>
-    <body class="container">
+    <body>
       <%- include ../partials/header %>
+      <div class="container">
+
       <h1>Add a new API</h1>
       <form action="/" method="POST">
         <div class="form-group">
@@ -37,7 +39,7 @@
         </div>
         <div class="form-group">
           <label>Number of tools offered:</label>
-          <input type="number" name='tools' id="api-tools" placeholder="Number of tools" class="form-control">
+          <input type="number" name='tools' id="api-tools" placeholder="0" class="form-control">
         </div>
         <div class="form-group">
           <label>Category:</label>
@@ -55,29 +57,84 @@
               <option value="Video">Video</option>
           </select>
         </div>
+
+
+
+
+
         <div class="rated-categories">
+
           <hr>
+
           <h4>Ratings</h4>
+
+          <div class="form-group">
+            <div class="row lead">
+                <div id="stars" class="starrr"></div>
+                Overall Rating <span id="count">0</span> star(s)
+            </div>
+          </div>
+
+
+
         <div class="form-group">
           <label>Install:</label>
-          <input type="text" name='install' id="rating-install" placeholder="1 - 5" class="form-control">
-        </div>
+                <select class="form-control" id="rating-install" name="install">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+
+
+
+
         <div class="form-group">
           <label>Readability:</label>
-          <input type="text" name='readability' id="rating-readability" placeholder="1 - 5" class="form-control">
+            <select class="form-control" id="rating-readability" name="readability">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
         </div>
+
+
+
         <div class="form-group">
           <label>Technicality:</label>
-          <input type="text" name='technicality' id="rating-technicality" placeholder="1 - 5" class="form-control">
+          <select class="form-control" id="rating-technicality" name="technicality">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
         </div>
-        </div>
+    </div>
+
         <div class="form-group">
           <input type="submit" value='Save My API'>
         </div>
+
+
+
+
         <a href="/">Back</a>
+
+          <!-- //this is how to make star ratings
+            <div class="row lead">
+                <div id="stars" class="starrr"></div>
+                You gave: <span id="count">0</span> star(s)
+        	  </div> -->
+
 
       </form>
 
       <%- include ../partials/footer.ejs %>
+    </div>
     </body>
 </html>

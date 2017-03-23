@@ -7,8 +7,8 @@
 
 <body>
     <% include ../partials/header %>
-        <!-- <div class="jumbotron">login</div> -->
 
+    <div class="container">
         <% if (message.length > 0) { %>
             <div class="alert alert-danger">
                 <%= message %>
@@ -34,10 +34,10 @@
                 <h2>Login/Register with GitHub:</h2>
 
                 <a href="/auth/github" class="btn btn-primary"><span class="#"></span> GitHub</a>
-                
+
               </div>
 
                 <% include ../partials/footer.ejs %>
-
+    </div>
 </body>
 </html>
