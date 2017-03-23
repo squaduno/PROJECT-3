@@ -95,6 +95,26 @@ function apiFavorite(req, res)  {
     })
 }
 
+function search(req, res) {
+  var searchTerm = req.query.name
+  Api.find({}, function(err, api){
+    if (err) throw err
+    api.find({name: searchTerm})
+    .then(function (data) {
+      res.render('apis/show', {api: api});
+    })
+
+  })
+  .catch(function (err) {
+    console.error(err);
+  });
+}
+
+function postSearch(req, res) {
+  var id = req.params.id
+  console.log(req.params.id)
+  res.redirect('/' + id);
+}
 
 module.exports = {
   apiIndex: apiIndex,
@@ -104,5 +124,7 @@ module.exports = {
   apiEdit: apiEdit,
   apiUpdate: apiUpdate,
   apiDestroy: apiDestroy,
-  apiFavorite: apiFavorite
+  apiFavorite: apiFavorite,
+  search: search,
+  postSearch: postSearch
 }
