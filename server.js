@@ -61,8 +61,8 @@ function(req, res) {
 
 // root route
 
-app.use('/', apiRoutes)
 
+app.use('/', apiRoutes)
 app.use('/users', userRoutes)
 
 
