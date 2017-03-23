@@ -28,7 +28,6 @@
     "express": "^4.15.2",
     "express-ejs-layouts": "^2.2.0",
     "express-session": "^1.15.1",
-    "jquery-bar-rating": "^1.2.2",
     "method-override": "~1.0.0",
     "mongoose": "^4.4.20",
     "morgan": "^1.8.1",
