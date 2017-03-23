@@ -24,7 +24,7 @@ router.route('/:id/edit')
 
 router.route('/:id')
   .post(apiUpdate)
-  // .get(apiShow)
+  .get(apiShow)
   .delete(apiDestroy)
 
 
