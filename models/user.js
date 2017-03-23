@@ -7,18 +7,14 @@ var User = mongoose.Schema({
   admin: Boolean,
   local: {
     name: String,
-    email: {
-      type: String,
-      required: true,
-      unique: true
-    },
+    email: String,
     password: String,
   },
   github: {
     id: String,
     token: String,
     email: String,
-    name: String
+    name: String,
   },
   favorites: [{
     type: mongoose.Schema.ObjectId,

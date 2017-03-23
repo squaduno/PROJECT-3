@@ -3,8 +3,10 @@
     <head>
         <%- include ../partials/head %>
     </head>
-    <body class="container">
+    <body>
       <%- include ../partials/header %>
+      <div class="container">
+
       <h1>Add a new API</h1>
       <form action="/" method="POST">
         <div class="form-group">
@@ -63,15 +65,16 @@
           <h4>Ratings</h4>
 
           <div class="form-group">
-            <div class="row lead"  name="install">
+            <div class="row lead">
                 <div id="stars" class="starrr"></div>
                 Overall Rating <span id="count">0</span>
             </div>
           </div>
 
+
+
         <div class="form-group">
           <label>Install:</label>
-              <div class="container">
                 <select class="form-control" id="rating-install" name="install">
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -80,7 +83,7 @@
                   <option value="5">5</option>
                 </select>
               </div>
-          </div>
+
 
 
 
@@ -110,23 +113,24 @@
     </div>
 
         <div class="form-group">
-          <input type="submit" value='Save My API' id="installHack">
+          <input type="submit" value='Save My API'>
         </div>
+
+
 
 
         <a href="/">Back</a>
 
-<!--
-          //this is how to make star ratings
+          <!-- //this is how to make star ratings
             <div class="row lead">
                 <div id="stars" class="starrr"></div>
                 You gave: <span id="count">0</span> star(s)
         	  </div> -->
 
 
-
       </form>
 
       <%- include ../partials/footer.ejs %>
+    </div>
     </body>
 </html>

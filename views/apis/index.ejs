@@ -2,14 +2,20 @@
 <html>
   <head>
     <%- include('../partials/head')  %>
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css" /> -->
   </head>
   <body>
     <%- include('../partials/header') %>
     <div class="container">
 
+        <a href="/new" class="btn btn-primary">Create new Api</a>
+
+        <hr>
+
           <% apis.forEach(function(api) { %>
+
             <% if (user) {%>
+
             <button data-target="<%= api._id %>" class="favoriteButton" type="button"><img id="starButton2" src="http://img.freepik.com/free-vector/vinyl-disc_1021-30.jpg?size=338&ext=jpg"></button>
             <% } %>
             <div class="indexCss">
@@ -34,8 +40,8 @@
           </div>
 <br>
           <% }) %>
-    </div>
-    <a href="/new">Create new Api</a>
+
     <%- include ../partials/footer %>
+  </div>
   </body>
 </html>
