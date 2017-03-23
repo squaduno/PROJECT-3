@@ -86,47 +86,41 @@
           <div class="form-group">
             <label>Install:</label>
                   <select class="form-control" id="api-install" name="install" value="<%- api.install %>">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+                    // populates with pre-selected install
+                    <%
+                    var options = [ 1, 2, 3, 4, 5 ];
+                    for ( var i = 0; i < options.length; i++ )
+                    {
+                      var selected = ( api.install == options[i] ) ? "selected" : "";
+                      %><option value="<%=options[i] %>" <%=selected %>><%= options[i] %></option><%
+                    }
+                    %>
                   </select>
                 </div>
-        <!-- previously had users input rating by typing anything -->
-        <!-- <div class="form-group">
-          <label>Install:</label>
-          <input type="text" name='install' value="<%- api.install %>" id="api-install" placeholder="Rate 1 - 5" class="form-control">
-        </div> -->
-<!-- forces users to choose from 1-5 but will not remember their previous input -->        <label>Readability:</label>
               <select class="form-control" id="api-readability" name="readability" value="<%- api.readability %>">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+                // populates with pre-selected readability
+                <%
+                var options = [ 1, 2, 3, 4, 5 ];
+                for ( var i = 0; i < options.length; i++ )
+                {
+                  var selected = ( api.readability == options[i] ) ? "selected" : "";
+                  %><option value="<%=options[i] %>" <%=selected %>><%= options[i] %></option><%
+                }
+                %>
               </select>
             </div>
-        <!-- previously had users input rating by typing anything -->
-        <!-- <div class="form-group">
-          <label>Readability:</label>
-          <input type="text" name='readability' value="<%= api.readability %>" id="api-readability" placeholder="Rate 1 - 5" class="form-control">
-        </div> -->
-<!-- forces users to choose from 1-5 but will not remember their previous input -->        <label>Technicality:</label>
               <select class="form-control" id="api-technicality" name="technicality" value="<%- api.technicality %>">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+                // populates with pre-selected technicality
+                <%
+                var options = [ 1, 2, 3, 4, 5 ];
+                for ( var i = 0; i < options.length; i++ )
+                {
+                  var selected = ( api.technicality == options[i] ) ? "selected" : "";
+                  %><option value="<%=options[i] %>" <%=selected %>><%= options[i] %></option><%
+                }
+                %>
               </select>
             </div>
-        <!-- previously had users input rating by typing anything -->
-        <!-- <div class="form-group">
-          <label>Technicality:</label>
-          <input type="text" name='technicality' value="<%- api.technicality %>" id="api-technicality" placeholder="Rate 1 - 5" class="form-control">
-        </div>
-        </div> -->
 
         <div class="form-group">
           <input type="submit" value='Update API'>
