@@ -32,10 +32,18 @@ function postLogin(request, response) {
   return loginProperty(request, response)
 }
 
-function getLogout(request, response) {
+function getLogout(request, response, next) {
   request.logout();
-  response.redirect('/users/login');
-}
+  // request.session.destroy(function(err) {
+  //     if (err) {
+  //       return next(err);
+  //     }
+  //     return res.send({
+  //       authenticated: req.isAuthenticated()
+  //     })
+  //   })
+    response.redirect('/users/login');
+  }
 
 
 function index(req, res) {
@@ -48,11 +56,11 @@ function index(req, res) {
 //SHOW
 function show(req, res) {
   var id = req.params.id
-  User.findById({_id: id})
+  User.findById(id)
   .populate('favorites')
   .exec( function(err, user) {
     if (err) throw err
-    res.render('users/show', {user: user})
+    res.render('users/show', {userProfile: user})
   })
 }
 
@@ -68,20 +76,19 @@ function create(req, res){
 // EDIT
 function edit(req, res){
   var id = req.params.id
-  User.findById({_id: id}, function(err, user) {
+  User.findById(id, function(err, user) {
     if (err) throw err
-    res.render('users/edit', {user: user})
+      res.render('users/edit', {userProfile: user})
   })
 }
 
 // UPDATE
 function update(req, res) {
 var id = req.params.id
-User.findById({_id: id}, function(err, user) {
+User.findById(id, function(err, user) {
   if (err) throw err
   // change user username and expLevel
-  if(req.body.name) user.name = req.body.name
-  if(req.body.email) user.email = req.body.email
+  user.local.name = req.body.name
   user.expLevel = req.body.expLevel
   //save the user
   user.save(function(err) {

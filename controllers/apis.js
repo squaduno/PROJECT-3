@@ -9,11 +9,15 @@ function apiIndex(req, res) {
 }
 
 function apiShow(req, res) {
-  var id = req.params.id
-  Api.findById(id, function(err, api) {
-    if (err) throw err
-    res.render('apis/show', {api: api})
-  })
+  if (typeof req.params.id == String) {
+    var id = req.params.id
+    Api.findById(id, function(err, api) {
+      if (err) throw err
+      res.render('apis/show', {api: api})
+    })
+  } else {
+    res.redirect('/')
+  }
 }
 
 
@@ -34,7 +38,7 @@ newApi.save(function(err, saveApi){
 
 function apiEdit(req, res){
   var id = req.params.id
-  Api.findById({_id: id}, function(err, api) {
+  Api.findById(id, function(err, api) {
     if (err) throw err
     res.render('apis/edit', {api: api})
   })
@@ -43,7 +47,7 @@ function apiEdit(req, res){
 // UPDATE
 function apiUpdate(req, res) {
 var id = req.params.id
-Api.findById({_id: id}, function(err, api) {
+Api.findById(id, function(err, api) {
   if (err) throw err
   // change api key values
   if(req.body.name) api.name = req.body.name
@@ -54,8 +58,10 @@ Api.findById({_id: id}, function(err, api) {
   api.free = req.body.free
   api.authentication = req.body.authentication
   api.deprecated = req.body.deprecated
+
   if(req.body.tools) api.tools = req.body.tools
   if(req.body.category) api.category = req.body.category
+
   if(req.body.install) api.install = req.body.install
   if(req.body.readability) api.readability = req.body.readability
   if(req.body.technicality) api.technicality = req.body.technicality
@@ -81,18 +87,30 @@ function apiDestroy(req, res) {
 
 function apiFavorite(req, res)  {
     var id = req.body.id
-    console.log(id)
     Api.findById(id, function(err, api){
       if (err) throw err
       User.findById(req.user._id, function(err, user){
         if (err) throw err
-        user.favorites.push(api)
-        user.save(function (err, updatedUser){
+        function sameFav(){
+          for(i = 0; i < user.favorites.length; i++){
+            if(user.favorites[i] == id){
+              return true
+            }
+          }
+          return false
+        }
+        console.log(sameFav());
+        if(!sameFav()){
+          user.favorites.push(api)
+          user.save(function (err, updatedUser){
           if (err) throw err
-          res.json(updatedUser)
-        })
+            res.json(updatedUser)
+          })
+        } else {
+          res.json(user)
+        }
       })
-    })
+  })
 }
 
 function search(req, res) {
@@ -115,6 +133,7 @@ function postSearch(req, res) {
   console.log(req.params.id)
   res.redirect('/' + id);
 }
+
 
 module.exports = {
   apiIndex: apiIndex,
