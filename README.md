@@ -53,7 +53,6 @@ This project will consist of two models: API and User. Our API model will includ
 #### Unsolved Problems
 - Admin setup is not finalized. As a workaround, current admin users are hard-coded into our app
 - Search bar is currently case-sensitive
-- When editing/updating ratings for APIs, user is unable to view what they had previously entered
 
 #### Installation Instructions
 - Clone the repo
