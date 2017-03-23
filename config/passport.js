@@ -89,14 +89,20 @@ passport.use(new GitHubStrategy({
         return callback(null, user);
       } else {
         var newUser = new User();
-        console.log('GitHub profile:' + JSON.stringify(profile._json))
+        // console.log('GitHub profile:' + JSON.stringify(profile._json))
         newUser.github = {
           id: profile.id,
           token: accessToken,
           name: profile._json.name,
           // email: profile._json.email
         }
-newUser.local.email = 'GitHub Guest ' + profile._json.name
+        if (profile._json.email !== null){
+newUser.local.email = profile._json.email
+} else if (profile._json.email == null){
+newUser.local.email = 'Guest visiting us from GitHub'
+}
+
+newUser.local.name = profile._json.name;
 console.log(newUser)
 
         newUser.save(function(err) {

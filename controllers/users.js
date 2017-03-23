@@ -32,10 +32,18 @@ function postLogin(request, response) {
   return loginProperty(request, response)
 }
 
-function getLogout(request, response) {
+function getLogout(request, response, next) {
   request.logout();
-  response.redirect('/users/login');
-}
+  // request.session.destroy(function(err) {
+  //     if (err) {
+  //       return next(err);
+  //     }
+  //     return res.send({
+  //       authenticated: req.isAuthenticated()
+  //     })
+  //   })
+    response.redirect('/users/login');
+  }
 
 
 function index(req, res) {
