@@ -80,20 +80,31 @@ function apiDestroy(req, res) {
 
 function apiFavorite(req, res)  {
     var id = req.body.id
-    console.log(id)
     Api.findById(id, function(err, api){
       if (err) throw err
       User.findById(req.user._id, function(err, user){
         if (err) throw err
-        user.favorites.push(api)
-        user.save(function (err, updatedUser){
+        function sameFav(){
+          for(i = 0; i < user.favorites.length; i++){
+            if(user.favorites[i] == id){
+              return true
+            }
+          }
+          return false
+        }
+        console.log(sameFav());
+        if(!sameFav()){
+          user.favorites.push(api)
+          user.save(function (err, updatedUser){
           if (err) throw err
-          res.json(updatedUser)
-        })
+            res.json(updatedUser)
+          })
+        } else {
+          res.json(user)
+        }
       })
-    })
+  })
 }
-
 
 module.exports = {
   apiIndex: apiIndex,
