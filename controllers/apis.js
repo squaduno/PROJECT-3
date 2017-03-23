@@ -128,7 +128,7 @@ function apiFavorite(req, res)  {
 
 function postSearch(req, res) {
   console.log(req.body)
-  var api = req.body.searchTerm
+  var api = req.body.searchTerm;
   console.log(req.body.searchTerm)
   Api.find({name: api}, function(err, api) {
     console.log(api)

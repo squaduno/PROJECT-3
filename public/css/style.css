@@ -35,3 +35,37 @@ font-family: 'Cedarville Cursive', cursive;
   height: 40px;
   width: 40px;
 }
+
+#profileName {
+  font-size: 45px;
+  font-weight: bold;
+
+}
+#apiname {
+  font-size: 40px;
+}
+
+#editUser {
+  font-size: 18px;
+  float: right;
+  text-decoration: underline;
+}
+#backUser  {
+font-size: 18px;
+text-decoration: underline;
+}
+
+.indent {
+  margin-left: 10%;
+  font-size: 18px;
+}
+
+.profileTitles {
+  font-size: 20px;
+
+
+}
+.profileText {
+  font-size: 20px;
+  text-decoration: underline;
+}

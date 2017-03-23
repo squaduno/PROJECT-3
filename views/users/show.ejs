@@ -5,21 +5,28 @@
   </head>
   <body>
     <%- include ../partials/header %>
+
     <div class="container">
 
-          <div>
-              <h3><%= userProfile.local.name %></div></h3>
+          <div id="profileName"><%= userProfile.local.name %></div>
+          <a href="/users/<%- userProfile._id%>/edit" id="editUser">Edit</a>
               <br>
-              <div><label>Experience Level: </label> <%= userProfile.expLevel %></div>
-              <br>
-              <div><label>Favorites: </label>
-                <% userProfile.favorites.forEach(function(favorite) {  %>
-                <%= favorite.name  %>
+              <div class="profileTitles"><label class="profileText">Experience Level: </label>
+                <p class="indent"><%= userProfile.expLevel %></div></p>
+              <div class="profileTitles"><label class="profileText">Contact Info: </label>
+                <p class="indent"><%= userProfile.local.email %></div></p>
+              <div class="profileTitles"><label class="profileText">Favorites: </label>
+                <p class="indent"><% userProfile.favorites.forEach(function(favorite) {  %></p>
+                <p class="indent"><%= "-" + favorite.name + " : " + favorite.url + ", " + favorite.category%></p>
+
               <%  }) %>
             </div>
 
-          <a href="/users/<%- userProfile._id%>/edit">Edit</a>
-          <a href="/">Back</a>
+            <br>
+            <br>
+            <br>
+
+          <a href="/" id="backUser">Back</a>
     </div>
     <%- include ../partials/footer %>
   </body>

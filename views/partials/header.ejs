@@ -42,13 +42,13 @@
 
               <li><a href="/users/<%= user._id %>">Profile</a></li>
                 <li><a href="/users/<%= user._id %>/edit">Account Settings</a></li>
+                <li role="separator" class="divider"></li>
                 <li><a href="/users/logout">Log Out</a></li>
                 <% } else { %>
                 <li><a href="/users/login">Login</a></li>
                 <li><a href="/users/signup">Signup</a></li>
                 <% } %>
 
-              <li role="separator" class="divider"></li>
             </ul>
           </li>
         </ul>
