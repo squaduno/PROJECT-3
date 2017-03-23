@@ -23,7 +23,7 @@ var express         = require('express'),
 
 //this is for users
   router.route('/')
-  .get(index)
+  .get(isAdmin, index)
   .post(create)
 
   router.route('/signup')
