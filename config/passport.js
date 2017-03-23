@@ -108,7 +108,7 @@ module.exports = function(passport) {
           } else if (profile._json.email == null && profile._json.name !== null) {
             newUser.local.email = profile._json.name
           } else {
-            newUser.local.name = "Guest visiting us from GitHub";
+            newUser.local.email = "Guest visiting us from GitHub" ;
           }
           console.log(newUser)
           newUser.save(function(err) {
