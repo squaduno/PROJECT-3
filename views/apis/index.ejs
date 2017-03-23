@@ -16,18 +16,19 @@
 
             <% if (user) {%>
 
+            <h4><div id=apiname> <%= api.name %></div></h4>
             <button data-target="<%= api._id %>" class="favoriteButton" type="button"><img id="starButton2" src="http://img.freepik.com/free-vector/vinyl-disc_1021-30.jpg?size=338&ext=jpg"></button>
             <% } %>
             <div class="indexCss">
 
-              <div id=apiname> <%= api.name %></div>
-              <div class="margin"><label>About:</label> <%= api.about %></div>
-              <div class="margin"><label>URL: </label> <a href="<%= api.url %>">Click to access API documentation</a></div>
+
+              <!-- <div class="margin"><label>About:</label> <%= api.about %></div> -->
+              <!-- <div class="margin"><label>URL: </label> <a href="<%= api.url %>">Click to access API documentation</a></div> -->
               <div class="margin"><label>Support provided: </label> <%= api.support %></div>
               <div class="margin"><label>Free: </label> <%= api.free %></div>
               <div class="margin"><label>Authentication offered: </label> <%= api.authentication %></div>
               <div class="margin"><label>Deprecated: </label> <%= api.deprecated %></div>
-              <div class="margin"><label>Number of tools offered: </label> <%= api.tools %></div>
+              <!-- <div class="margin"><label>Number of tools offered: </label> <%= api.tools %></div> -->
               <div class="margin"><label>Category: </label> <%= api.category %></div>
               <!-- RATINGS BEGIN -->
               <!-- <div class="margin"><label>Overall Rating: </label> <span class="overallRating-star"><%= Math.round((api.install + api.readability + api.technicality)/3) %> </span></div> -->
@@ -46,7 +47,7 @@
               <!-- ======================================= -->
               <!-- <div class="margin"><label>Install Rating: </label> <span class="install-star"> <%= api.install %> </span></div> -->
               <!-- stars for INSTALL RATING -->
-              <% if (api.install === 1) { %>
+              <!-- <% if (api.install === 1) { %>
               <div class="margin"><label>Install Rating: </label> <span class="install-star"> ⭐️ </span></div>
               <% } else if (api.install === 2) { %>
               <div class="margin"><label>Install Rating: </label> <span class="install-star"> ⭐️ ⭐️ </span></div>
@@ -56,11 +57,11 @@
               <div class="margin"><label>Install Rating: </label> <span class="install-star"> ⭐️ ⭐️ ⭐️ ⭐️ </span></div>
               <% } else if (api.install === 5) { %>
               <div class="margin"><label>Install Rating: </label> <span class="install-star"> ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ </span></div>
-              <% } %>
+              <% } %> -->
               <!-- ======================================= -->
               <!-- <div class="margin"><label>Readability Rating: </label> <span class="readability-star"> <%= api.readability %> </span></div> -->
               <!-- stars for READABILITY RATING -->
-              <% if (api.readability === 1) { %>
+              <!-- <% if (api.readability === 1) { %>
               <div class="margin"><label>Readability Rating: </label> <span class="readability-star"> ⭐️ </span></div>
               <% } else if (api.readability === 2) { %>
               <div class="margin"><label>Readability Rating: </label> <span class="readability-star"> ⭐️ ⭐️ </span></div>
@@ -70,11 +71,11 @@
               <div class="margin"><label>Readability Rating: </label> <span class="readability-star"> ⭐️ ⭐️ ⭐️ ⭐️ </span></div>
               <% } else if (api.readability === 5) { %>
               <div class="margin"><label>Readability Rating: </label> <span class="readability-star"> ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ </span></div>
-              <% } %>
+              <% } %> -->
               <!-- ======================================= -->
               <!-- <div class="margin"><label>Technicality Rating: </label> <span class="technicality-star"> <%= api.technicality %></span></div> -->
               <!-- stars for TECHNICALITY RATING -->
-              <% if (api.technicality === 1) { %>
+              <!-- <% if (api.technicality === 1) { %>
               <div class="margin"><label>Technicality Rating: </label> <span class="technicality-star"> ⭐️ </span></div>
               <% } else if (api.technicality === 2) { %>
               <div class="margin"><label>Technicality Rating: </label> <span class="technicality-star"> ⭐️ ⭐️ </span></div>
@@ -84,7 +85,7 @@
               <div class="margin"><label>Technicality Rating: </label> <span class="technicality-star"> ⭐️ ⭐️ ⭐️ ⭐️ </span></div>
               <% } else if (api.technicality === 5) { %>
               <div class="margin"><label>Technicality Rating: </label> <span class="technicality-star"> ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ </span></div>
-              <% } %>
+              <% } %> -->
               <!-- ======================================= -->
               <a href="/<%- api._id%>/edit">Edit</a>
               <button class="delBtn" id="<%= api._id %>">Delete</button>
