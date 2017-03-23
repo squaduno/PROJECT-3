@@ -129,9 +129,10 @@ function apiFavorite(req, res)  {
 // }
 
 function postSearch(req, res) {
-  console.log(req.body)
-  var api = req.body.searchTerm;
-  console.log(req.body.searchTerm)
+  console.log("hitPostSearchmethod")
+  var firstLetter = req.body.searchTerm.charAt(0).toUpperCase()
+  var api = firstLetter + req.body.searchTerm.slice(1)
+  console.log(api)
   Api.find({name: api}, function(err, api) {
     console.log(api)
     if (err) throw err
