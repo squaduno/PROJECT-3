@@ -6,7 +6,7 @@
   <body>
     <%- include ../partials/header %>
     <div class="container">
-          <div class="">
+          <div>
               <h3><%= api.name %></div></h3>
               <div><%= api.about %></div>
               <br>
@@ -94,11 +94,11 @@
               <div class="margin"><label>Technicality Rating: </label> <span class="technicality-star"> ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ </span></div>
               <% } %>
               <!-- ======================================= -->
-          </div>
 
           <a href="/<%- api._id%>/edit">Edit</a>
           <a href="/">Back</a>
-    </div>
+        </div>
+
     <%- include ../partials/footer %>
     </div>
   </body>
