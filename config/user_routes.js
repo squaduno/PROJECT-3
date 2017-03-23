@@ -15,10 +15,13 @@ var express         = require('express'),
     }
 
     function isAdmin(req, res, next) {
-      if(req.user.admin){
+      if(user && req.user.admin){
         return next()
+      } else if (user) {
+        res.redirect("/users/" + req.user.id)
+      } else {
+        res.redirect("./")
       }
-      res.redirect("/users/" + req.user.id)
     }
 
 //this is for users
