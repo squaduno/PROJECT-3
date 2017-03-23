@@ -12,10 +12,30 @@
               <br>
               <div><label>URL: </label> <a href="<%= api.url %>">Click to access API documentation</a></div>
               <br>
-              <div><label>Support provided: </label> <%= api.support %></div>
-              <div><label>Free: </label> <%= api.free %></div>
-              <div><label>Authentication offered: </label> <%= api.authentication %></div>
-              <div><label>Deprecated: </label> <%= api.deprecated %></div>
+              <!-- SUPPORT CHECKBOX -->
+              <% if (api.support === true) { %> <div class="margin"><label>Support provided: </label> <span class="support-checkmark">☑️</span></div>
+              <% } else { %>
+              <div class="margin"><label>Support provided: </label> <span class="support-checkmark">✘</span></div>
+              <% } %>
+              <!-- FREE CHECKBOX -->
+              <!-- <div class="margin"><label>Free: </label> <%= api.free %></div> -->
+              <% if (api.free === true) { %> <div class="margin"><label>Free: </label> <span class="free-checkmark">☑️</span></div>
+              <% } else { %>
+              <div class="margin"><label>Support provided: </label> <span class="free-checkmark">✘</span></div>
+              <% } %>
+              <!-- AUTHENTICATION CHECKBOX -->
+              <!-- <div class="margin"><label>Authentication offered: </label> <%= api.authentication %></div> -->
+              <% if (api.authentication === true) { %> <div class="margin"><label>Authentication offered: </label> <span class="authentication-checkmark">☑️</span></div>
+              <% } else { %>
+              <div class="margin"><label>Authentication offered: </label> <span class="authentication-checkmark">✘</span></div>
+              <% } %>
+              <!-- DEPRECATED CHECKBOX -->
+              <!-- <div class="margin"><label>Deprecated: </label> <%= api.deprecated %></div> -->
+              <% if (api.deprecated === true) { %> <div class="margin"><label>Deprecated: </label> <span class="deprecated-checkmark">☑️</span></div>
+              <% } else { %>
+              <div class="margin"><label>Deprecated: </label> <span class="deprecated-checkmark">✘</span></div>
+              <% } %>
+              <!-- END OF BOOLEANS -->
               <div><label>Number of tools offered: </label> <%= api.tools %></div>
               <div><label>Category: </label> <%= api.category %></div>
               <!-- ======================================= -->
