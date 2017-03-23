@@ -54,8 +54,10 @@ Api.findById({_id: id}, function(err, api) {
   api.free = req.body.free
   api.authentication = req.body.authentication
   api.deprecated = req.body.deprecated
+
   if(req.body.tools) api.tools = req.body.tools
   if(req.body.category) api.category = req.body.category
+
   if(req.body.install) api.install = req.body.install
   if(req.body.readability) api.readability = req.body.readability
   if(req.body.technicality) api.technicality = req.body.technicality
