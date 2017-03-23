@@ -64,10 +64,12 @@ Api.findById(id, function(err, api) {
   //save the api
   console.log(req.body)
   api.save(function(err) {
-    if (err) res.json({message: 'Something went wrong, could not save api'})
-
-    console.log("Update successful");
-    res.redirect('/' + id)
+    if (err) {
+      res.json({message: 'Something went wrong, could not save api'})
+    } else {
+      console.log("Update successful");
+      res.redirect('/' + id)
+    }
    })
  })
 }
