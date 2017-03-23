@@ -60,7 +60,7 @@ function show(req, res) {
   .populate('favorites')
   .exec( function(err, user) {
     if (err) throw err
-    res.render('users/show', {user: user})
+    res.render('users/show', {userProfile: user})
   })
 }
 
@@ -78,7 +78,7 @@ function edit(req, res){
   var id = req.params.id
   User.findById({_id: id}, function(err, user) {
     if (err) throw err
-    res.render('users/edit', {user: user})
+      res.render('users/edit', {userProfile: user})
   })
 }
 
@@ -88,8 +88,7 @@ var id = req.params.id
 User.findById({_id: id}, function(err, user) {
   if (err) throw err
   // change user username and expLevel
-  if(req.body.name) user.name = req.body.name
-  if(req.body.email) user.email = req.body.email
+  user.local.name = req.body.name
   user.expLevel = req.body.expLevel
   //save the user
   user.save(function(err) {

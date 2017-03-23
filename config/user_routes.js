@@ -14,6 +14,13 @@ var express         = require('express'),
       res.redirect('/');
     }
 
+    function isAdmin(req, res, next) {
+      if(req.user.admin){
+        return next()
+      }
+      res.redirect("/users/" + req.user.id)
+    }
+
 //this is for users
   router.route('/')
   .get(index)

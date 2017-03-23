@@ -6,20 +6,20 @@
   <body>
     <%- include ../partials/header %>
     <div class="container">
-          <div class="">
-              <h3><%= user.local.name %></div></h3>
+          <div>
+              <h3><%= userProfile.local.name %></div></h3>
               <br>
-              <div><label>Experience Level: </label> <%= user.expLevel %></div>
+              <div><label>Experience Level: </label> <%= userProfile.expLevel %></div>
               <br>
               <div><label>Favorites: </label>
-                <% user.favorites.forEach(function(favorite) {  %>
+                <% userProfile.favorites.forEach(function(favorite) {  %>
                 <%= favorite.name  %>
               <%  }) %>
             </div>
 
 
           </div>
-          <a href="/users/<%- user._id%>/edit">Edit</a>
+          <a href="/users/<%- userProfile._id%>/edit">Edit</a>
           <a href="/">Back</a>
     </div>
     <%- include ../partials/footer %>
