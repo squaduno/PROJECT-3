@@ -24,9 +24,10 @@
               <div class="margin"><label>Deprecated: </label> <%= api.deprecated %></div>
               <div class="margin"><label>Number of tools offered: </label> <%= api.tools %></div>
               <div class="margin"><label>Category: </label> <%= api.category %></div>
-              <div class="margin"><label>Install Rating: </label> <%= api.install %></div>
-              <div class="margin"><label>Readability Rating: </label> <%= api.readability %></div>
-              <div class="margin"><label>Technicality Rating: </label> <%= api.technicality %></div>
+              <div class="margin"><label>Overall Rating: </label> <%= api.overallRating %></div>
+              <div class="margin"><label>Install Rating: </label> <span class="install-star"> <%= api.install %> </span></div>
+              <div class="margin"><label>Readability Rating: </label> <span class="readability-star"> <%= api.readability %> </span></div>
+              <div class="margin"><label>Technicality Rating: </label> <span class="technicality-star"> <%= api.technicality %></span></div>
               <button class="delBtn" id="<%= api._id %>">Delete</button>
               <a href="/<%- api._id %>">Show more</a>
 
