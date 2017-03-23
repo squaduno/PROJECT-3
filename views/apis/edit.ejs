@@ -8,18 +8,22 @@
     <div class="container">
       <h1>Add a new API</h1>
       <form action="/<%= api._id %>" method="POST">
+
         <div class="form-group">
           <label>Name:</label>
           <input type="text" name='name' value="<%- api.name %>" placeholder="Name" class="form-control">
         </div>
+
         <div class="form-group">
           <label>URL:</label>
           <input type="url" name='url' value="<%- api.url %>" id="api-url" placeholder="URL" class="form-control">
         </div>
+
         <div class="form-group">
           <label>About:</label>
           <input type="text" name='about' value="<%- api.about %>" id="api-about" placeholder="About" class="form-control">
         </div>
+
         <div class="form-group">
           <label>Support provided:</label>
           <% if (api.support) { %>
@@ -28,6 +32,7 @@
           <input type="checkbox" name='support' id="api-support" class="form-control">
           <% } %>
         </div>
+
         <div class="form-group">
           <label>Free:</label>
           <% if (api.free) { %>
@@ -36,6 +41,7 @@
           <input type="checkbox" name="free" id="api-free" class="form-control">
           <% } %>
         </div>
+
         <div class="form-group">
           <label>Authenication offered:</label>
           <% if (api.authentication) { %>
@@ -44,6 +50,7 @@
           <input type="checkbox" name='authentication' id="api-authentication" class="form-control">
           <% } %>
         </div>
+
         <div class="form-group">
           <label>Deprecated:</label>
           <% if (api.deprecated) { %>
@@ -56,6 +63,7 @@
           <label>Number of tools offered:</label>
           <input type="number" name='tools' value="<%- api.tools %>" id="api-tools" placeholder="Number of tools" class="form-control">
         </div>
+
         <div class="form-group">
           <label>Category:</label>
           <select name="category" value="<%- api.category %>" id="api-category" class="form-control">
@@ -70,26 +78,54 @@
             %>
           </select>
         </div>
+
         <div class="rated-categories">
           <hr>
           <h4>Ratings</h4>
-        <div class="form-group">
-          <label>Install:</label>
-          <input type="text" name='install' value="<%- api.install %>" id="api-install" placeholder="Rate 1 - 5" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Readability:</label>
-          <input type="text" name='readability' value="<%= api.readability %>" id="api-readability" placeholder="Rate 1 - 5" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Technicality:</label>
-          <input type="text" name='technicality' value="<%- api.technicality %>" id="api-technicality" placeholder="Rate 1 - 5" class="form-control">
-        </div>
-        </div>
+  <!-- forces users to choose from 1-5 but will not remember their previous input -->
+          <div class="form-group">
+            <label>Install:</label>
+                  <select class="form-control" id="api-install" name="install" value="<%- api.install %>">
+                    // populates with pre-selected install
+                    <%
+                    var options = [ 1, 2, 3, 4, 5 ];
+                    for ( var i = 0; i < options.length; i++ )
+                    {
+                      var selected = ( api.install == options[i] ) ? "selected" : "";
+                      %><option value="<%=options[i] %>" <%=selected %>><%= options[i] %></option><%
+                    }
+                    %>
+                  </select>
+                </div>
+              <select class="form-control" id="api-readability" name="readability" value="<%- api.readability %>">
+                // populates with pre-selected readability
+                <%
+                var options = [ 1, 2, 3, 4, 5 ];
+                for ( var i = 0; i < options.length; i++ )
+                {
+                  var selected = ( api.readability == options[i] ) ? "selected" : "";
+                  %><option value="<%=options[i] %>" <%=selected %>><%= options[i] %></option><%
+                }
+                %>
+              </select>
+            </div>
+              <select class="form-control" id="api-technicality" name="technicality" value="<%- api.technicality %>">
+                // populates with pre-selected technicality
+                <%
+                var options = [ 1, 2, 3, 4, 5 ];
+                for ( var i = 0; i < options.length; i++ )
+                {
+                  var selected = ( api.technicality == options[i] ) ? "selected" : "";
+                  %><option value="<%=options[i] %>" <%=selected %>><%= options[i] %></option><%
+                }
+                %>
+              </select>
+            </div>
+
         <div class="form-group">
           <input type="submit" value='Update API'>
         </div>
-        <a href="/<%- api._id%>">Back</a>
+        <a class="btn btn-primary"href="/<%- api._id%>">Back</a>
 
       </form>
 

@@ -85,9 +85,7 @@ module.exports = function(passport) {
     // CREATES A NEW USER WITH INFO FROM GITHUB
     function(accessToken, refreshToken, profile, callback) {
       User.findOne({
-        github: {
-          id: profile.id
-        }
+        'github.id': profile.id
       }, function(err, user) {
         if (err)
           return callback(err);
@@ -95,6 +93,7 @@ module.exports = function(passport) {
           return callback(null, user);
         } else {
           var newUser = new User();
+          console.log(profile.id)
           // console.log('GitHub profile:' + JSON.stringify(profile._json))
           newUser.github = {
             id: profile.id,

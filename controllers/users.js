@@ -104,7 +104,7 @@ function destroy(request, response) {
   var id = request.params.id;
 
   User.remove({_id: id}, function(error) {
-    if(error) response.json({message: 'Could not delete quote b/c:' + error});
+    if(error) throw err
 
     response.json({message: 'User successfully deleted'});
   });

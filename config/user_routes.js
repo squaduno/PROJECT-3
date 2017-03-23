@@ -15,15 +15,18 @@ var express         = require('express'),
     }
 
     function isAdmin(req, res, next) {
-      if(req.user.admin){
+      if(user && req.user.admin){
         return next()
+      } else if (user) {
+        res.redirect("/users/" + req.user.id)
+      } else {
+        res.redirect("./")
       }
-      res.redirect("/users/" + req.user.id)
     }
 
 //this is for users
   router.route('/')
-  .get(index)
+  .get(isAdmin, index)
   .post(create)
 
   router.route('/signup')

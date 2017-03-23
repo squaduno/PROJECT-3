@@ -12,7 +12,8 @@ function apiShow(req, res) {
     var id = req.params.id
     Api.findById(id, function(err, api) {
       if (err) throw err
-      res.render('apis/show', {api: api})
+
+      res.render('apis/show', {api: api, user: req.user})
     })
 }
 
@@ -63,6 +64,7 @@ Api.findById(id, function(err, api) {
   if(req.body.technicality) api.technicality = req.body.technicality
   //save the api
   console.log(req.body)
+
    api.save(function(err) {
      if (err) {
        res.json({message: 'Something went wrong, could not save api'})
