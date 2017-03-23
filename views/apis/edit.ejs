@@ -3,8 +3,9 @@
     <head>
         <%- include ../partials/head %>
     </head>
-    <body class="container">
+    <body>
       <%- include ../partials/header %>
+    <div class="container">
       <h1>Add a new API</h1>
       <form action="/<%= api._id %>" method="POST">
         <div class="form-group">
@@ -93,5 +94,6 @@
       </form>
 
       <%- include ../partials/footer.ejs %>
+    </div>
     </body>
 </html>
