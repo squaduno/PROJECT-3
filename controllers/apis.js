@@ -63,14 +63,16 @@ Api.findById(id, function(err, api) {
   if(req.body.technicality) api.technicality = req.body.technicality
   //save the api
   console.log(req.body)
-  api.save(function(err) {
-    if (err) res.json({message: 'Something went wrong, could not save api'})
-
-    console.log("Update successful");
-    res.redirect('/' + id)
-   })
- })
-}
+   api.save(function(err) {
+     if (err) {
+       res.json({message: 'Something went wrong, could not save api'})
+     } else {
+       console.log("Update successful");
+       res.redirect('/' + id)
+     }
+    })
+  })
+ }
 
 function apiDestroy(req, res) {
   var id = req.params.id

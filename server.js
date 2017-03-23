@@ -60,10 +60,8 @@ function(req, res) {
 //END OF GITHUB
 
 // root route
-
-
-app.use('/', apiRoutes)
 app.use('/users', userRoutes)
+app.use('/', apiRoutes)
 
 
 
