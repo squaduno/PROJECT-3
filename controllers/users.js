@@ -56,7 +56,7 @@ function index(req, res) {
 //SHOW
 function show(req, res) {
   var id = req.params.id
-  User.findById({_id: id})
+  User.findById(id)
   .populate('favorites')
   .exec( function(err, user) {
     if (err) throw err
@@ -76,7 +76,7 @@ function create(req, res){
 // EDIT
 function edit(req, res){
   var id = req.params.id
-  User.findById({_id: id}, function(err, user) {
+  User.findById(id, function(err, user) {
     if (err) throw err
       res.render('users/edit', {userProfile: user})
   })
@@ -85,7 +85,7 @@ function edit(req, res){
 // UPDATE
 function update(req, res) {
 var id = req.params.id
-User.findById({_id: id}, function(err, user) {
+User.findById(id, function(err, user) {
   if (err) throw err
   // change user username and expLevel
   user.local.name = req.body.name
