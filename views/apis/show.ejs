@@ -94,9 +94,10 @@
               <div class="margin"><label>Technicality Rating: </label> <span class="technicality-star"> ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ </span></div>
               <% } %>
               <!-- ======================================= -->
-
-          <a href="/<%- api._id%>/edit">Edit</a>
-          <a href="/">Back</a>
+          <% if(user && user.admin) { %>
+          <a class="btn btn-primary"href="/<%- api._id%>/edit">Edit</a>
+          <% } %>
+          <a class="btn btn-primary"href="/">Back</a>
         </div>
 
     <%- include ../partials/footer %>

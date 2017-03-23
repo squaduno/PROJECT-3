@@ -12,7 +12,8 @@ function apiShow(req, res) {
     var id = req.params.id
     Api.findById(id, function(err, api) {
       if (err) throw err
-      res.render('apis/show', {api: api})
+
+      res.render('apis/show', {api: api, user: req.user})
     })
 }
 
