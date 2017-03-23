@@ -9,11 +9,15 @@ function apiIndex(req, res) {
 }
 
 function apiShow(req, res) {
-  var id = req.params.id
-  Api.findById(id, function(err, api) {
-    if (err) throw err
-    res.render('apis/show', {api: api})
-  })
+  if (typeof req.params.id == String) {
+    var id = req.params.id
+    Api.findById(id, function(err, api) {
+      if (err) throw err
+      res.render('apis/show', {api: api})
+    })
+  } else {
+    res.redirect('/')
+  }
 }
 
 
@@ -34,7 +38,7 @@ newApi.save(function(err, saveApi){
 
 function apiEdit(req, res){
   var id = req.params.id
-  Api.findById({_id: id}, function(err, api) {
+  Api.findById(id, function(err, api) {
     if (err) throw err
     res.render('apis/edit', {api: api})
   })
@@ -43,7 +47,7 @@ function apiEdit(req, res){
 // UPDATE
 function apiUpdate(req, res) {
 var id = req.params.id
-Api.findById({_id: id}, function(err, api) {
+Api.findById(id, function(err, api) {
   if (err) throw err
   // change api key values
   if(req.body.name) api.name = req.body.name
