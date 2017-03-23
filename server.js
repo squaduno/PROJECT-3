@@ -14,7 +14,6 @@ var express         = require('express'),
     userRoutes      = require('./config/user_routes');
                       require('dotenv').config()
 
-
 // connect database
 var dbUri = process.env.MONGODB_URI || 'mongodb://localhost/jukebox'
 mongoose.connect(dbUri)
