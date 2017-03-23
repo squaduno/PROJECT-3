@@ -9,15 +9,11 @@ function apiIndex(req, res) {
 }
 
 function apiShow(req, res) {
-  if (typeof req.params.id == String) {
     var id = req.params.id
     Api.findById(id, function(err, api) {
       if (err) throw err
       res.render('apis/show', {api: api})
     })
-  } else {
-    res.redirect('/')
-  }
 }
 
 
