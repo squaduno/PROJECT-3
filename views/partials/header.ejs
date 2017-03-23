@@ -17,7 +17,7 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <% if (user) {%>
+          <% if (user) { %>
           <li ><a href="/users/<%= user._id %>"><img id="starButton" src="http://img.freepik.com/free-vector/vinyl-disc_1021-30.jpg?size=338&ext=jpg" height="30px" width="30px"> <span class="sr-only">(current)</span></a></li>
           <% } else { %>
           <li ><a href="/users/login"><img id="starButton" src="https://www.biddingowl.com/images/signInGraphic.jpg" height="30px" width="30px"> <span class="sr-only">(current)</span></a></li>
