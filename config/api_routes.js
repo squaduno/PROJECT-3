@@ -4,7 +4,7 @@ router = express.Router()
 
 // require controllers
 //for api
-var {apiIndex, apiShow, apiNew, apiCreate, apiEdit, apiUpdate, apiDestroy, apiFavorite, search, postSearch} = require('../controllers/apis')
+var {apiIndex, apiShow, apiNew, apiCreate, apiEdit, apiUpdate, apiDestroy, apiFavorite, postSearch} = require('../controllers/apis')
 
 
 router.route('/')
@@ -18,7 +18,6 @@ router.route('/favorite')
     .post(apiFavorite)
 
 router.route('/search')
-    .get(search)
     .post(postSearch)
 
 router.route('/:id/edit')

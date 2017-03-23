@@ -109,25 +109,37 @@ function apiFavorite(req, res)  {
   })
 }
 
-function search(req, res) {
-  var searchTerm = req.query.name
-  Api.find({name: searchTerm}, function(err, api) {
-    if (err) throw err
-    api.find({name: searchTerm})
-    .then(function (data) {
-      res.render('apis/show', {api: api});
-    })
+// function search(req, res) {
+//   var searchTerm = req.query.name
+//   Api.find({name: searchTerm}, function(err, api) {
+//     if (err) throw err
+//     api.find({name: searchTerm})
+//     .then(function (data) {
+//       res.render('apis/show', {api: api});
+//     })
+//
+//   })
+//   .catch(function (err) {
+//     console.error(err);
+//   });
+// }
 
+function postSearch(req, res) {
+  console.log(req.body)
+  var api = req.body.searchTerm
+  console.log(req.body.searchTerm)
+  Api.find({name: api}, function(err, api) {
+    console.log(api)
+    if (err) throw err
+    if (!api.length) {
+      res.redirect('/')
+    } else {
+      res.redirect('/' + api[0]._id);
+    }
   })
   .catch(function (err) {
     console.error(err);
   });
-}
-
-function postSearch(req, res) {
-  var api = req.body.searchTerm
-  console.log(req.body.searchTerm)
-  res.redirect('/search?name=' + api);
 }
 
 
@@ -140,6 +152,5 @@ module.exports = {
   apiUpdate: apiUpdate,
   apiDestroy: apiDestroy,
   apiFavorite: apiFavorite,
-  search: search,
   postSearch: postSearch
 }
