@@ -1081,6 +1081,7 @@ PANELS CONFIGURATIONS
 	text-align: center;
 	background: #ffffff;
 	color: #ccd1d9;
+  height: 300px;
 }
 
 .white-panel p {

@@ -12,8 +12,9 @@
 }
 
 .favoriteButton {
-  float:right;
-  margin-top: 5%;
+  border: white;
+  background-color: white;
+
 }
 
 #navLogoCss {
@@ -32,8 +33,8 @@ font-family: 'Cedarville Cursive', cursive;
   width: 25px;
 }
 #starButton2  {
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
 }
 
 #profileName {
