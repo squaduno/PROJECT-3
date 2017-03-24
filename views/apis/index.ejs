@@ -1,153 +1,123 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
       <%- include('../partials/head')  %>
-
   </head>
-
   <body>
-
     <%- include('../partials/header') %>
-    
-    
-  <section id="container" >
 
-  
-<!-- **********************************************************************************************************************************************************
-    MAIN SIDEBAR MENU
-*********************************************************************************************************************************************************** -->
-      <!--sidebar start-->
-      
-      <aside>
-          <div id="sidebar"  class="nav-collapse ">
+  <div class="container">
 
+    <a href="/new" class="btn btn-primary">Create new Api</a>
 
-              <!-- sidebar menu start-->
-              <ul class="sidebar-menu" id="nav-accordion">
+    <% apis.forEach(function(api) { %>
 
-              	  <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered">Marcel Newman</h5>
-              </ul>
-              <!-- sidebar menu end-->
+      <% if (user) {%>
+        <button data-target="<%= api._id %>" class="favoriteButton" type="button"><img id="starButton2" src="http://img.freepik.com/free-vector/vinyl-disc_1021-30.jpg?size=338&ext=jpg"></button>
+        <% } %>
+      <hr>
+      <h4><div id=apiname> <%= api.name %></div></h4>
 
-          </div>
-      </aside>
-      
-      <!--sidebar end-->
+        <div class="row">
 
-      <!-- **********************************************************************************************************************************************************
-      MAIN CONTENT
-      *********************************************************************************************************************************************************** -->
-      <!--main content start-->
-      <section id="main-content">
-          <section class="wrapper site-min-height">
-          	<h3><i class="fa fa-angle-right"></i> Blank Page</h3>
-          	<div class="row mt">
-          		<div class="col-lg-12">
-          		<p>
+          <div class="col-lg-4 col-md-4 col-sm-4 mb">
+        <!-- WHITE PANEL - TOP USER -->
+            <div class="white-panel pn">
+              <div class="white-header">
+                <h5>
 
-                <div class="container">
-
-                  <% if(user && user.admin) { %>
-                  <a class="btn btn-primary" href="/<%- api._id%>/edit">Edit</a>
-                  <button class="btn btn-primary delBtn" id="<%= api._id %>">Delete</button>
-                  <a class="btn btn-primary" href="/<%- api._id %>">Show more</a>
-                  <a href="/new" class="btn btn-primary">Create new Api</a>
+                  <!-- stars for OVERALL RATING -->
+                  <% if (Math.round((api.install + api.readability + api.technicality)/3) === 1) { %>
+                  <div class="margin"><label class="overallRating-star">Overall Rating ⭐️ </label></div>
+                  <% } else if (Math.round((api.install + api.readability + api.technicality)/3) === 2) { %>
+                  <div class="margin"><label class="overallRating-star">Overall Rating ⭐️ ⭐️  </label></div>
+                  <% } else if (Math.round((api.install + api.readability + api.technicality)/3) === 3) { %>
+                  <div class="margin"><label class="overallRating-star">Overall Rating ⭐️ ⭐️ ⭐️</label></div>
+                  <% } else if (Math.round((api.install + api.readability + api.technicality)/3) === 4) { %>
+                  <div class="margin"><label class="overallRating-star">Overall Rating ⭐️ ⭐️ ⭐️ ⭐️ </label></div>
+                  <% } else if (Math.round((api.install + api.readability + api.technicality)/3) === 5) { %>
+                  <div class="margin"><label class="overallRating-star">Overall Rating ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ </label></div>
                   <% } %>
+                  <!-- ======================================= -->
 
-                <hr>
+                </h5>
+              </div>
+              <p><img src="assets/img/ui-zac.jpg" class="img-circle" width="50"></p>
+              <p><b><div id=apiname> <%= api.name %> </div></b></p>
+                <div class="row">
+                  <div class="col-md-6">
+                    <p class="small mt">
 
+                      <% if (api.install === 1) { %>
+                      <div class="margin"><label class="install-star">Install Rating ⭐️ </label></div>
+                      <% } else if (api.install === 2) { %>
+                      <div class="margin"><label class="install-star">Install Rating ⭐️ ⭐️  </label></div>
+                      <% } else if (api.install === 3) { %>
+                      <div class="margin"><label class="install-star">Install Rating ⭐️ ⭐️ ⭐️</label></div>
+                      <% } else if (api.install === 4) { %>
+                      <div class="margin"><label class="install-star">Install Rating ⭐️ ⭐️ ⭐️ ⭐️ </label></div>
+                      <% } else if (api.install === 5) { %>
+                      <div class="margin"><label class="install-star">Install Rating ⭐️ ⭐️ ⭐️ ⭐️ ⭐️  </label></div>
+                      <% } %>
+                      <!-- ======================================= -->
+                    </p>
+                    <!-- <p>2012</p> -->
+                  </div>
+                  <div class="col-md-6">
+                    <p class="small mt">
 
-                <% apis.forEach(function(api) { %>
-
-
-
-                  <% if (user) {%>
-                    <h4><div id=apiname> <%= api.name %></div></h4>
-                    <button data-target="<%= api._id %>" class="favoriteButton" type="button"><img id="starButton2" src="http://img.freepik.com/free-vector/vinyl-disc_1021-30.jpg?size=338&ext=jpg"></button>
-                  <% } %>
-
-
-
-            <div class="row">
-
-              <div class="col-lg-4 col-md-4 col-sm-4 mb">
-            <!-- WHITE PANEL - TOP USER -->
-                <div class="white-panel pn">
-                  <div class="white-header">
-                    <h5>
-
-                      <!-- stars for OVERALL RATING -->
-                      <% if (Math.round((api.install + api.readability + api.technicality)/3) === 1) { %>
-                      <div class="margin"><label class="overallRating-star">Overall Rating ⭐️ </label></div>
-                      <% } else if (Math.round((api.install + api.readability + api.technicality)/3) === 2) { %>
-                      <div class="margin"><label class="overallRating-star">Overall Rating ⭐️ ⭐️  </label></div>
-                      <% } else if (Math.round((api.install + api.readability + api.technicality)/3) === 3) { %>
-                      <div class="margin"><label class="overallRating-star">Overall Rating ⭐️ ⭐️ ⭐️</label></div>
-                      <% } else if (Math.round((api.install + api.readability + api.technicality)/3) === 4) { %>
-                      <div class="margin"><label class="overallRating-star">Overall Rating ⭐️ ⭐️ ⭐️ ⭐️ </label></div>
-                      <% } else if (Math.round((api.install + api.readability + api.technicality)/3) === 5) { %>
-                      <div class="margin"><label class="overallRating-star">Overall Rating ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ </label></div>
+                      <% if (api.readability === 1) { %>
+                      <div class="margin"><label class="install-star">Readability Rating ⭐️ </label></div>
+                      <% } else if (api.install === 2) { %>
+                      <div class="margin"><label class="install-star">Readability Rating ⭐️ ⭐️  </label></div>
+                      <% } else if (api.install === 3) { %>
+                      <div class="margin"><label class="install-star">Readability Rating ⭐️ ⭐️ ⭐️</label></div>
+                      <% } else if (api.install === 4) { %>
+                      <div class="margin"><label class="install-star">Readability Rating ⭐️ ⭐️ ⭐️ ⭐️ </label></div>
+                      <% } else if (api.install === 5) { %>
+                      <div class="margin"><label class="install-star">Readability Rating ⭐️ ⭐️ ⭐️ ⭐️ ⭐️  </label></div>
                       <% } %>
                       <!-- ======================================= -->
 
-                    </h5>
+
+                    </p>
+                    <!-- <p>2012</p> -->
                   </div>
-                  <p><img src="assets/img/ui-zac.jpg" class="img-circle" width="50"></p>
-                  <p><b><div id=apiname> <%= api.name %> </div></b></p>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <p class="small mt">
+                  <div class="col-md-6">
+                    <p class="small mt">
 
-                          <% if (api.install === 1) { %>
-                          <div class="margin"><label class="install-star">Install Rating ⭐️ </label></div>
-                          <% } else if (api.install === 2) { %>
-                          <div class="margin"><label class="install-star">Install Rating ⭐️ ⭐️  </label></div>
-                          <% } else if (api.install === 3) { %>
-                          <div class="margin"><label class="install-star">Install Rating ⭐️ ⭐️ ⭐️</label></div>
-                          <% } else if (api.install === 4) { %>
-                          <div class="margin"><label class="install-star">Install Rating ⭐️ ⭐️ ⭐️ ⭐️ </label></div>
-                          <% } else if (api.install === 5) { %>
-                          <div class="margin"><label class="install-star">Install Rating ⭐️ ⭐️ ⭐️ ⭐️ ⭐️  </label></div>
-                          <% } %>
-                          <!-- ======================================= -->
+                      <% if (api.readability === 1) { %>
+                      <div class="margin"><label class="install-star">Readability Rating ⭐️ </label></div>
+                      <% } else if (api.install === 2) { %>
+                      <div class="margin"><label class="install-star">Readability Rating ⭐️ ⭐️  </label></div>
+                      <% } else if (api.install === 3) { %>
+                      <div class="margin"><label class="install-star">Readability Rating ⭐️ ⭐️ ⭐️</label></div>
+                      <% } else if (api.install === 4) { %>
+                      <div class="margin"><label class="install-star">Readability Rating ⭐️ ⭐️ ⭐️ ⭐️ </label></div>
+                      <% } else if (api.install === 5) { %>
+                      <div class="margin"><label class="install-star">Readability Rating ⭐️ ⭐️ ⭐️ ⭐️ ⭐️  </label></div>
+                      <% } %>
+                      <!-- ======================================= -->
 
 
-                        </p>
-                        <p>2012</p>
-                      </div>
-                      <div class="col-md-6">
-                        <p class="small mt">TOTAL SPEND</p>
-                        <p>$ 47,60</p>
-                      </div>
-                    </div>
+                    </p>
+                    <!-- <p>2012</p> -->
+                  </div>
                 </div>
-              </div><!-- /col-md-4 -->
-
-
-
             </div>
-
-
-
-            <br>
-                      <% }) %>
-
-
-          		</div>
-          	</div>
-
-		    </section><! --/wrapper -->
-      </section><!-- /MAIN CONTENT -->
+          </div><!-- /col-md-4 -->
+        </div>
+        <br>
+        <% if(user && user.admin) { %>
+          <a class="btn btn-primary" href="/<%- api._id%>/edit">Edit</a>
+          <button class="btn btn-primary delBtn" id="<%= api._id %>">Delete</button>
+          <% } %>
+          <a class="btn btn-primary" href="/<%- api._id %>">Show more</a>
+        <% }) %>
+  </div>
 
       <!--main content end-->
 
-  </section>
 
     <%- include ../partials/footer %>
 
