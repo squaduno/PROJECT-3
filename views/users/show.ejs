@@ -17,7 +17,10 @@
                 <p class="indent"><%= userProfile.local.email %></div></p>
               <div class="profileTitles"><label class="profileText">Favorites: </label>
                 <p class="indent"><% userProfile.favorites.forEach(function(favorite) {  %></p>
-                <p class="indent"><%= "-" + favorite.name + " : " + favorite.url + ", " + favorite.category%></p>
+                <p class="indent3"><%= "-" + favorite.name + " : " + favorite.category %></p>
+
+                <p class="indent2"><%= "Url : " + favorite.url %></p>
+                <p class="indent2"><%= "About : " + favorite.about %></p>
 
               <%  }) %>
             </div>

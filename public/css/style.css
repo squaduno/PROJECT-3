@@ -59,6 +59,15 @@ text-decoration: underline;
   margin-left: 10%;
   font-size: 18px;
 }
+.indent3 {
+  margin-left: 10%;
+  font-size: 18px;
+  text-decoration: underline;
+}
+.indent2 {
+  margin-left: 15%;
+  font-size: 18px;
+}
 
 .profileTitles {
   font-size: 20px;
