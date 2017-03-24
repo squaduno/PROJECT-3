@@ -1765,6 +1765,8 @@ pre code {
   }
   .col-md-6 {
     width: 33%;
+    margin-top: 15px;
+
   }
   .col-md-5 {
     width: 41.66666667%;

@@ -12,8 +12,20 @@
 }
 
 .favoriteButton {
-  float:right;
-  margin-top: 5%;
+  border: white;
+  background-color: white;
+
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 45px;
+  background-color: #74AFAD;
+  color: white;
+  padding-top: 14px;
 }
 
 #navLogoCss {
@@ -32,8 +44,8 @@ font-family: 'Cedarville Cursive', cursive;
   width: 25px;
 }
 #starButton2  {
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
 }
 
 #profileName {
