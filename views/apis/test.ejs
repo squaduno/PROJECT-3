@@ -81,7 +81,7 @@
               <!-- ======================================= -->
               <!-- <div class="margin"><label>Readability Rating: </label> <span class="readability-star"> <%= api.readability %> </span></div> -->
               <!-- stars for READABILITY RATING -->
-              <!-- <% if (api.readability === 1) { %>
+              <% if (api.readability === 1) { %>
               <div class="margin"><label>Readability Rating: </label> <span class="readability-star"> ⭐️ </span></div>
               <% } else if (api.readability === 2) { %>
               <div class="margin"><label>Readability Rating: </label> <span class="readability-star"> ⭐️ ⭐️ </span></div>
@@ -91,11 +91,11 @@
               <div class="margin"><label>Readability Rating: </label> <span class="readability-star"> ⭐️ ⭐️ ⭐️ ⭐️ </span></div>
               <% } else if (api.readability === 5) { %>
               <div class="margin"><label>Readability Rating: </label> <span class="readability-star"> ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ </span></div>
-              <% } %> -->
+              <% } %>
               <!-- ======================================= -->
               <!-- <div class="margin"><label>Technicality Rating: </label> <span class="technicality-star"> <%= api.technicality %></span></div> -->
               <!-- stars for TECHNICALITY RATING -->
-              <!-- <% if (api.technicality === 1) { %>
+              <% if (api.technicality === 1) { %>
               <div class="margin"><label>Technicality Rating: </label> <span class="technicality-star"> ⭐️ </span></div>
               <% } else if (api.technicality === 2) { %>
               <div class="margin"><label>Technicality Rating: </label> <span class="technicality-star"> ⭐️ ⭐️ </span></div>
@@ -105,7 +105,7 @@
               <div class="margin"><label>Technicality Rating: </label> <span class="technicality-star"> ⭐️ ⭐️ ⭐️ ⭐️ </span></div>
               <% } else if (api.technicality === 5) { %>
               <div class="margin"><label>Technicality Rating: </label> <span class="technicality-star"> ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ </span></div>
-              <% } %> -->
+              <% } %>
               <!-- ======================================= -->
               <a href="/<%- api._id%>/edit">Edit</a>
               <button class="delBtn" id="<%= api._id %>">Delete</button>

@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-      <%- include('../partials/head')  %>
+      <%- include ../partials/head  %>
   </head>
   <body>
-    <%- include('../partials/header') %>
+    <%- include ../partials/header %>
 
   <div class="container">
-
+    <% if(user && user.admin) { %>
     <a href="/new" class="btn btn-primary">Create new Api</a>
+
+    <% } %>
+<hr>
 
     <% apis.forEach(function(api) { %>
 
-      <% if (user) {%>
-        <button data-target="<%= api._id %>" class="favoriteButton" type="button"><img id="starButton2" src="http://img.freepik.com/free-vector/vinyl-disc_1021-30.jpg?size=338&ext=jpg"></button>
-        <% } %>
-      <hr>
-      <h4><div id=apiname> <%= api.name %></div></h4>
+
+
 
         <div class="row">
 
@@ -44,6 +44,9 @@
               </div>
               <p><img src="assets/img/ui-zac.jpg" class="img-circle" width="50"></p>
               <p><b><div id=apiname> <%= api.name %> </div></b></p>
+              <% if (user) {%>
+                <button data-target="<%= api._id %>" class="favoriteButton" type="button"><img id="starButton2" src="http://img.freepik.com/free-vector/vinyl-disc_1021-30.jpg?size=338&ext=jpg"></button>
+                <% } %>
                 <div class="row">
                   <div class="col-md-6">
                     <p class="small mt">
@@ -66,16 +69,17 @@
                   <div class="col-md-6">
                     <p class="small mt">
 
+                      <!-- stars for READABILITY RATING -->
                       <% if (api.readability === 1) { %>
-                      <div class="margin"><label class="install-star">Readability Rating ⭐️ </label></div>
-                      <% } else if (api.install === 2) { %>
-                      <div class="margin"><label class="install-star">Readability Rating ⭐️ ⭐️  </label></div>
-                      <% } else if (api.install === 3) { %>
-                      <div class="margin"><label class="install-star">Readability Rating ⭐️ ⭐️ ⭐️</label></div>
-                      <% } else if (api.install === 4) { %>
-                      <div class="margin"><label class="install-star">Readability Rating ⭐️ ⭐️ ⭐️ ⭐️ </label></div>
-                      <% } else if (api.install === 5) { %>
-                      <div class="margin"><label class="install-star">Readability Rating ⭐️ ⭐️ ⭐️ ⭐️ ⭐️  </label></div>
+                      <div class="margin"><label>Readability Rating: </label> <span class="readability-star"> ⭐️ </span></div>
+                      <% } else if (api.readability === 2) { %>
+                      <div class="margin"><label>Readability Rating: </label> <span class="readability-star"> ⭐️ ⭐️ </span></div>
+                      <% } else if (api.readability === 3) { %>
+                      <div class="margin"><label>Readability Rating: </label> <span class="readability-star"> ⭐️ ⭐️ ⭐️ </span></div>
+                      <% } else if (api.readability === 4) { %>
+                      <div class="margin"><label>Readability Rating: </label> <span class="readability-star"> ⭐️ ⭐️ ⭐️ ⭐️ </span></div>
+                      <% } else if (api.readability === 5) { %>
+                      <div class="margin"><label>Readability Rating: </label> <span class="readability-star"> ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ </span></div>
                       <% } %>
                       <!-- ======================================= -->
 
@@ -86,16 +90,16 @@
                   <div class="col-md-6">
                     <p class="small mt">
 
-                      <% if (api.readability === 1) { %>
-                      <div class="margin"><label class="install-star">Readability Rating ⭐️ </label></div>
-                      <% } else if (api.install === 2) { %>
-                      <div class="margin"><label class="install-star">Readability Rating ⭐️ ⭐️  </label></div>
-                      <% } else if (api.install === 3) { %>
-                      <div class="margin"><label class="install-star">Readability Rating ⭐️ ⭐️ ⭐️</label></div>
-                      <% } else if (api.install === 4) { %>
-                      <div class="margin"><label class="install-star">Readability Rating ⭐️ ⭐️ ⭐️ ⭐️ </label></div>
-                      <% } else if (api.install === 5) { %>
-                      <div class="margin"><label class="install-star">Readability Rating ⭐️ ⭐️ ⭐️ ⭐️ ⭐️  </label></div>
+                      <% if (api.technicality === 1) { %>
+                      <div class="margin"><label>Technicality Rating: </label> <span class="technicality-star"> ⭐️ </span></div>
+                      <% } else if (api.technicality === 2) { %>
+                      <div class="margin"><label>Technicality Rating: </label> <span class="technicality-star"> ⭐️ ⭐️ </span></div>
+                      <% } else if (api.technicality === 3) { %>
+                      <div class="margin"><label>Technicality Rating: </label> <span class="technicality-star"> ⭐️ ⭐️ ⭐️ </span></div>
+                      <% } else if (api.technicality === 4) { %>
+                      <div class="margin"><label>Technicality Rating: </label> <span class="technicality-star"> ⭐️ ⭐️ ⭐️ ⭐️ </span></div>
+                      <% } else if (api.technicality === 5) { %>
+                      <div class="margin"><label>Technicality Rating: </label> <span class="technicality-star"> ⭐️ ⭐️ ⭐️ ⭐️ ⭐️ </span></div>
                       <% } %>
                       <!-- ======================================= -->
 
