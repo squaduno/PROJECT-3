@@ -52,7 +52,7 @@ This project will consist of two models: API and User. Our API model will includ
 
 #### Unsolved Problems
 - Admin setup is not finalized. As a workaround, current admin users are hard-coded into our app
-- Search bar is currently case-sensitive
+- Remaining stretch goals
 
 #### Installation Instructions
 - Clone the repo
