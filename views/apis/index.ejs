@@ -7,8 +7,13 @@
     <%- include ../partials/header %>
 
   <div class="container">
+<<<<<<< HEAD
     <% if(user && user.admin) { %>
     <a href="/new" class="btn btn-primary">Create new Api</a>
+=======
+
+    <a href="/new" class="btn btn-danger btnRED">Create new Api</a>
+>>>>>>> styling
 
     <% } %>
 <hr>
@@ -116,10 +121,10 @@
         </div>
         <br>
         <% if(user && user.admin) { %>
-          <a class="btn btn-primary" href="/<%- api._id%>/edit">Edit</a>
-          <button class="btn btn-primary delBtn" id="<%= api._id %>">Delete</button>
+          <a class="btn btn-danger btnRED" href="/<%- api._id%>/edit">Edit</a>
+          <button class="btn btn-danger btnRED delBtn" id="<%= api._id %>">Delete</button>
           <% } %>
-          <a class="btn btn-primary" href="/<%- api._id %>">Show more</a>
+          <a class="btn btn-danger btnRED" href="/<%- api._id %>">Show more</a>
         <% }) %>
   </div>
 

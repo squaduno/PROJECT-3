@@ -4,11 +4,15 @@
   font-size: 50px;
   text-align: center;
   font-weight: bold;
-
   color: red;
 }
 
-#navLogoCss {
+.jukenav {
+  float: left;
+max-width: 11%;
+}
+
+/*#navLogoCss {
   color: red;
 
   font-weight: bold;
@@ -18,7 +22,7 @@
   color: red;
 
   font-size: 15px;
-}
+}*/
 #starButton  {
   height: 25px;
   width: 25px;
@@ -93,14 +97,27 @@ html {
 
 .profileTitles {
   font-size: 20px;
+}
 
-
+.ctn{
+  border-color: red;
 }
 .profileText {
   font-size: 20px;
   text-decoration: underline;
 }
+<<<<<<< HEAD
 
 .container {
   margin-bottom: 100px;
+=======
+.navbar-default .navbar-nav .ls-nav  {
+    color: red;
+}
+
+.btnRED  {
+  color: rgba(255,20,20,1);
+  background-color: rgba(220,220,220,1);
+  border-color: rgba(200,10,10,1);
+>>>>>>> styling
 }
