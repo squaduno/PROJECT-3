@@ -28,8 +28,11 @@ var newApi = new Api(req.body)
 
 console.log(req.body)
 newApi.save(function(err, saveApi){
-  if (err) throw err
+  if (err){
+  res.redirect('/new')
+  } else {
   res.redirect('/')
+  }
  })
 }
 
