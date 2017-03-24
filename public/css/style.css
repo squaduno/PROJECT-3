@@ -103,7 +103,7 @@ html {
 }
 
 .ctn{
-  border-color: red;
+  border-color: #d9534f;
 }
 .profileText {
   font-size: 20px;
@@ -114,12 +114,11 @@ html {
   margin-bottom: 100px;
 
 .navbar-default .navbar-nav .ls-nav  {
-    color: red;
+    color: #d9534f;
 }
 
 .btnRED  {
   color: rgba(255,20,20,1);
   background-color: rgba(220,220,220,1);
   border-color: rgba(200,10,10,1);
->>>>>>> styling
 }
