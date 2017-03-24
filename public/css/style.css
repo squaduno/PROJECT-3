@@ -7,26 +7,6 @@
 
   color: red;
 }
-.indexCss {
-  font-size: 20px;
-}
-
-.favoriteButton {
-  border: white;
-  background-color: white;
-
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 45px;
-  background-color: #74AFAD;
-  color: white;
-  padding-top: 14px;
-}
 
 #navLogoCss {
   color: red;
@@ -67,6 +47,36 @@ font-size: 18px;
 text-decoration: underline;
 }
 
+.indexCss {
+  font-size: 20px;
+}
+
+.favoriteButton {
+  border: white;
+  background-color: white;
+
+}
+
+body {
+  padding-top: 60px;
+  padding-bottom: 45px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 45px;
+  padding-top: 14px;
+  margin-top: 50px;
+}
+
 .indent {
   margin-left: 10%;
   font-size: 18px;
@@ -89,4 +99,8 @@ text-decoration: underline;
 .profileText {
   font-size: 20px;
   text-decoration: underline;
+}
+
+.container {
+  margin-bottom: 100px;
 }
