@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-      <%- include('../partials/head')  %>
+      <%- include ../partials/head  %>
   </head>
   <body>
-    <%- include('../partials/header') %>
+    <%- include ../partials/header %>
 
   <div class="container">
-
+    <% if(user && user.admin) { %>
     <a href="/new" class="btn btn-primary">Create new Api</a>
+    <% } %>
 <hr>
     <% apis.forEach(function(api) { %>
 
