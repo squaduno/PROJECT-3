@@ -39,7 +39,7 @@ font-family: 'Cedarville Cursive', cursive;
 
 #editUser {
   font-size: 18px;
-  float: right;
+  float: left;
   text-decoration: underline;
 }
 #backUser  {

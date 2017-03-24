@@ -9,7 +9,7 @@
     <div class="container">
 
           <div id="profileName"><%= userProfile.local.name %></div>
-          <a href="/users/<%- userProfile._id%>/edit" id="editUser">Edit User</a>
+
               <br>
               <div class="profileTitles"><label class="profileText">Experience Level: </label>
                 <p class="indent"><%= userProfile.expLevel %></div></p>
@@ -31,7 +31,8 @@
             <br>
             <br>
 
-          <a href="/" id="backUser">Back to list</a>
+          <a href="/" id="backUser">Back to list</a><br>
+          <a href="/users/<%- userProfile._id%>/edit" id="editUser">Edit User</a>
 
     </div>
     <%- include ../partials/footer %>
