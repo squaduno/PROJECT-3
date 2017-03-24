@@ -7,14 +7,6 @@
 
   color: red;
 }
-.indexCss {
-  font-size: 20px;
-}
-
-.favoriteButton {
-  float:right;
-  margin-top: 5%;
-}
 
 #navLogoCss {
   color: red;
@@ -32,8 +24,8 @@ font-family: 'Cedarville Cursive', cursive;
   width: 25px;
 }
 #starButton2  {
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
 }
 
 #profileName {
@@ -47,7 +39,7 @@ font-family: 'Cedarville Cursive', cursive;
 
 #editUser {
   font-size: 18px;
-  float: right;
+  float: left;
   text-decoration: underline;
 }
 #backUser  {
@@ -55,18 +47,48 @@ font-size: 18px;
 text-decoration: underline;
 }
 
+.indexCss {
+  font-size: 20px;
+}
+
+.favoriteButton {
+  border: white;
+  background-color: white;
+
+}
+
+body {
+  padding-top: 60px;
+  padding-bottom: 45px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 45px;
+  padding-top: 14px;
+  margin-top: 50px;
+}
+
 .indent {
   margin-left: 10%;
-  font-size: 18px;
+  font-size: 16px;
 }
 .indent3 {
   margin-left: 10%;
-  font-size: 18px;
+  font-size: 16px;
   text-decoration: underline;
 }
 .indent2 {
   margin-left: 15%;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .profileTitles {
@@ -77,4 +99,8 @@ text-decoration: underline;
 .profileText {
   font-size: 20px;
   text-decoration: underline;
+}
+
+.container {
+  margin-bottom: 100px;
 }

@@ -9,7 +9,7 @@
     <div class="container">
 
           <div id="profileName"><%= userProfile.local.name %></div>
-          <a href="/users/<%- userProfile._id%>/edit" id="editUser">Edit</a>
+
               <br>
               <div class="profileTitles"><label class="profileText">Experience Level: </label>
                 <p class="indent"><%= userProfile.expLevel %></div></p>
@@ -17,10 +17,12 @@
                 <p class="indent"><%= userProfile.local.email %></div></p>
               <div class="profileTitles"><label class="profileText">Favorites: </label>
                 <p class="indent"><% userProfile.favorites.forEach(function(favorite) {  %></p>
-                <p class="indent3"><%= "-" + favorite.name + " : " + favorite.category %></p>
+                <p class="indent3"><%= favorite.name + ":"%></p>
 
-                <p class="indent2"><%= "Url : " + favorite.url %></p>
+                <p class="indent2">Url : <a href="<%= favorite.url %>"><%= favorite.url %></a></p>
+                <p class="indent2"><%= "Category : " + favorite.category %></p>
                 <p class="indent2"><%= "About : " + favorite.about %></p>
+                <p class="indent2">See More : <a href="/<%= favorite.id %>"><%= favorite.name %></a></p>
 
               <%  }) %>
             </div>
@@ -29,7 +31,8 @@
             <br>
             <br>
 
-          <a href="/" id="backUser">Back</a>
+          <a href="/" id="backUser">Back to list</a><br>
+          <a href="/users/<%- userProfile._id%>/edit" id="editUser">Edit User</a>
 
     </div>
     <%- include ../partials/footer %>
