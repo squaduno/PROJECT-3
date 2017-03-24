@@ -42,15 +42,19 @@
 
                 </h5>
               </div>
-              <p><img src="assets/img/ui-zac.jpg" class="img-circle" width="50"></p>
-              <p><b><div id=apiname> <%= api.name %> </div></b></p>
-              <% if (user) {%>
-                <button data-target="<%= api._id %>" class="favoriteButton" type="button"><img id="starButton2" src="http://img.freepik.com/free-vector/vinyl-disc_1021-30.jpg?size=338&ext=jpg"></button>
+
+              <p>
+
+                <% if (user) {%>
+                  <button data-target="<%= api._id %>" class="favoriteButton" type="button"><img id="starButton2" src="http://img.freepik.com/free-vector/vinyl-disc_1021-30.jpg?size=338&ext=jpg"></button>
                 <% } %>
+
+              </p>
+
+              <p><b><div id=apiname> <%= api.name %> </div></b></p>
                 <div class="row">
                   <div class="col-md-6">
                     <p class="small mt">
-
                       <% if (api.install === 1) { %>
                       <div class="margin"><label class="install-star">Install Rating ⭐️ </label></div>
                       <% } else if (api.install === 2) { %>
@@ -68,7 +72,6 @@
                   </div>
                   <div class="col-md-6">
                     <p class="small mt">
-
                       <!-- stars for READABILITY RATING -->
                       <% if (api.readability === 1) { %>
                       <div class="margin"><label>Readability Rating: </label> <span class="readability-star"> ⭐️ </span></div>
